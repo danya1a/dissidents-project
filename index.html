@@ -4,75 +4,295 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Дисиденти: голос свободи в епоху цифрових технологій | Інтегрований проєкт (11 клас)</title>
-  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
-  <link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-  <link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-  <link href="[https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap](https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap)" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            paper: '#F8F6F1',
-            paperDark: '#EFECE4',
-            ink: '#1C1B18',
-            inkMuted: '#57534E',
-            crimson: '#9E2A2B',
-            crimsonLight: '#FDF2F2',
-            navy: '#1E3A5F',
-            navyLight: '#EFF6FF',
-            gold: '#B45309',
-            borderWarm: '#E5E0D5'
-          },
-          fontFamily: {
-            serif: ['"Playfair Display"', 'Georgia', 'serif'],
-            sans: ['Inter', 'system-ui', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace']
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    /* ================= АВТОНОМНА ДИЗАЙН-СИСТЕМА (БЕЗ ЗАЛЕЖНОСТІ ВІД ЗОВНІШНІХ CDN) ================= */
+    :root {
+      --paper: #F8F6F1;
+      --paper-dark: #EFECE4;
+      --ink: #1C1B18;
+      --ink-muted: #57534E;
+      --crimson: #9E2A2B;
+      --crimson-light: #FDF2F2;
+      --navy: #1E3A5F;
+      --navy-light: #EFF6FF;
+      --gold: #B45309;
+      --border-warm: #E5E0D5;
+      --emerald-bg: #D1FAE5;
+      --emerald-text: #065F46;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: #F8F6F1;
-      color: #1C1B18;
-      font-family: 'Inter', sans-serif;
+      background-color: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
       -webkit-user-select: none;
       -moz-user-select: none;
-      -ms-user-select: none;
       user-select: none;
       overflow-x: hidden;
     }
 
     img {
+      max-width: 100%;
+      display: block;
       -webkit-user-drag: none;
-      user-drag: none;
       pointer-events: none;
     }
 
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #F8F6F1;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #C7C0B3;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #9E2A2B;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .editorial-shadow {
-      box-shadow: 0 10px 30px -10px rgba(28, 27, 24, 0.07), 0 4px 12px -2px rgba(28, 27, 24, 0.04);
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
     }
 
+    /* Типографіка */
+    .font-serif { font-family: 'Playfair Display', Georgia, serif; }
+    .font-sans { font-family: 'Inter', sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Контейнер та секції */
+    .container-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+    @media (min-width: 640px) { .container-main { padding: 0 2rem; } }
+
+    .section-block {
+      padding: 4.5rem 0;
+      border-bottom: 1px solid var(--border-warm);
+    }
+    @media (min-width: 768px) { .section-block { padding: 5.5rem 0; } }
+
+    .section-alt {
+      background-color: rgba(239, 236, 228, 0.55);
+    }
+
+    /* Навігація */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(248, 246, 241, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-warm);
+    }
+    .header-inner {
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 9px;
+      background: var(--crimson);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      transition: background 0.2s;
+    }
+    .brand-link:hover .brand-badge { background: var(--ink); }
+
+    .desktop-nav {
+      display: none;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--ink-muted);
+    }
+    .desktop-nav a {
+      transition: color 0.2s;
+      font-weight: 500;
+    }
+    .desktop-nav a:hover { color: var(--crimson); }
+
+    .mobile-menu-btn {
+      display: inline-flex;
+      padding: 0.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-warm);
+      color: var(--ink);
+      background: #fff;
+    }
+    .mobile-menu-panel {
+      display: none;
+      background: #fff;
+      border-bottom: 1px solid var(--border-warm);
+      padding: 0.75rem 1.25rem 1.25rem;
+    }
+    .mobile-menu-panel.open { display: block; }
+    .mobile-menu-panel a {
+      display: block;
+      padding: 0.6rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .mobile-menu-panel a:hover { background: var(--paper); color: var(--crimson); }
+
+    @media (min-width: 1024px) {
+      .desktop-nav { display: flex; }
+      .mobile-menu-btn { display: none; }
+      .mobile-menu-panel { display: none !important; }
+    }
+
+    /* Сітки (Grid) */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (min-width: 1024px) {
+      .hero-grid { grid-template-columns: 7fr 5fr; gap: 3rem; }
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+    @media (min-width: 640px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+
+    @media (min-width: 768px) {
+      .span-2-md { grid-column: span 2; }
+    }
+
+    .cyber-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (min-width: 1024px) {
+      .cyber-layout { grid-template-columns: 5fr 7fr; }
+    }
+
+    /* Бейджі та кнопки */
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .pill-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.8rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid var(--border-warm);
+      background: #fff;
+      color: var(--ink-muted);
+    }
+    .pill-badge.crimson {
+      background: rgba(158, 42, 43, 0.1);
+      color: var(--crimson);
+      border-color: rgba(158, 42, 43, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2.1rem, 4.2vw, 3.35rem);
+      font-weight: 700;
+      line-height: 1.12;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+    }
+    .hero-title em {
+      color: var(--crimson);
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .section-kicker {
+      display: block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--crimson);
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.75rem, 3vw, 2.45rem);
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 0.85rem;
+    }
+
+    /* Картки */
     .editorial-card {
       background: #FFFFFF;
-      border: 1px solid #E5E0D5;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
+      border: 1px solid var(--border-warm);
+      border-radius: 14px;
+      box-shadow: 0 10px 30px -10px rgba(28, 27, 24, 0.06);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
     .editorial-card:hover {
       transform: translateY(-3px);
@@ -80,483 +300,145 @@
       border-color: #D1C9B8;
     }
 
+    .accent-left-crimson { border-left: 4px solid var(--crimson); }
+    .accent-left-navy { border-left: 4px solid var(--navy); }
+    .accent-left-gold { border-left: 4px solid var(--gold); }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: 9px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--crimson); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.25rem;
+      border-radius: 9px;
+      background: #fff;
+      color: var(--ink);
+      border: 1px solid var(--border-warm);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--ink); background: var(--paper); }
+
+    /* Картка дисидента */
+    .dissident-header {
+      display: grid;
+      grid-template-columns: 1fr;
+      border-bottom: 1px solid var(--border-warm);
+      background: rgba(248, 246, 241, 0.6);
+    }
+    @media (min-width: 640px) {
+      .dissident-header { grid-template-columns: 200px 1fr; }
+    }
+    .dissident-photo-wrap {
+      position: relative;
+      background: var(--paper-dark);
+      min-height: 250px;
+      max-height: 300px;
+      overflow: hidden;
+    }
+    .dissident-photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      filter: grayscale(100%) contrast(1.08);
+    }
+
+    /* Цензурований текст */
     .redacted-text {
-      background-color: #1C1B18;
+      background-color: var(--ink);
       color: transparent;
-      border-radius: 3px;
+      border-radius: 4px;
       padding: 0 5px;
-      transition: all 0.35s ease;
+      transition: all 0.3s ease;
       cursor: pointer;
     }
     .redacted-text.revealed {
       background-color: #FEF3C7;
-      color: #9E2A2B;
+      color: var(--crimson);
       font-weight: 600;
     }
 
-    .nav-item.active {
-      color: #9E2A2B;
-      font-weight: 600;
+    /* Модальне вікно */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(28, 27, 24, 0.72);
+      backdrop-filter: blur(4px);
+      padding: 1rem;
     }
+    .modal-backdrop.open { display: flex; }
+    .modal-box {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 680px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-warm);
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Утиліти відступів і кольорів */
+    .p-4 { padding: 1rem; }
+    .p-5 { padding: 1.25rem; }
+    .p-6 { padding: 1.5rem; }
+    .p-8 { padding: 2rem; }
+    .mb-1 { margin-bottom: 0.25rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 0.75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-8 { margin-bottom: 2rem; }
+    .mb-10 { margin-bottom: 2.5rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mt-2 { margin-top: 0.5rem; }
+    .mt-3 { margin-top: 0.75rem; }
+    .mt-4 { margin-top: 1rem; }
+    .text-xs { font-size: 0.775rem; }
+    .text-sm { font-size: 0.895rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.275rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-crimson { color: var(--crimson); }
+    .text-navy { color: var(--navy); }
+    .text-gold { color: var(--gold); }
+    .text-muted { color: var(--ink-muted); }
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .italic { font-style: italic; }
+    .flex-wrap-gap { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+    .flex-between { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
   </style>
 </head>
-<body class="antialiased selection:bg-crimson selection:text-white">
+<body>
 
-  <!-- Порожній контейнер для захисту від статичних парсерів (SaveWeb2Zip тощо). Контент монтується динамічно після перевірки домену -->
+  <!-- Контейнер монтування після перевірки домену -->
   <div id="app-mount"></div>
 
-  <!-- Шаблон додатку (прихований від статичного рендеру і парсерів) -->
-  <template id="secure-payload">
-    <!-- Навігаційна панель -->
-    <header class="sticky top-0 z-40 bg-paper/95 backdrop-blur-md border-b border-borderWarm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#hero" class="flex items-center gap-3 group">
-          <div class="w-9 h-9 rounded-lg bg-crimson text-white flex items-center justify-center font-serif font-bold text-lg shadow-sm group-hover:bg-ink transition-colors">
-            Д
-          </div>
-          <div>
-            <span class="font-serif font-bold text-base sm:text-lg tracking-tight text-ink block leading-none">Голос Свободи</span>
-            <span class="text-[11px] text-inkMuted font-mono uppercase tracking-wider">Історія + Інформатика • 11 клас</span>
-          </div>
-        </a>
-
-        <nav class="hidden lg:flex items-center gap-6 text-sm text-inkMuted">
-          <a href="#hero" class="nav-item hover:text-ink transition-colors">Головна</a>
-          <a href="#thaw" class="nav-item hover:text-ink transition-colors">Історія відлиги</a>
-          <a href="#voices" class="nav-item hover:text-ink transition-colors">Голоси дисидентів</a>
-          <a href="#samvydav" class="nav-item hover:text-ink transition-colors">Самвидав і цензура</a>
-          <a href="#law" class="nav-item hover:text-ink transition-colors">Право на інформацію</a>
-          <a href="#cyber" class="nav-item hover:text-ink transition-colors">Кібербезпека</a>
-          <a href="#sources" class="nav-item hover:text-ink transition-colors">Джерела</a>
-        </nav>
-
-        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-lg border border-borderWarm text-ink hover:bg-paperDark" aria-label="Меню">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
-
-      <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-borderWarm px-4 pt-2 pb-4 space-y-1 text-sm">
-        <a href="#hero" class="mobile-link block py-2 px-3 rounded hover:bg-paper text-ink font-medium">Головна сторінка</a>
-        <a href="#thaw" class="mobile-link block py-2 px-3 rounded hover:bg-paper text-ink font-medium">1. Історія відлиги та хронологія</a>
-        <a href="#voices" class="mobile-link block py-2 px-3 rounded hover:bg-paper text-ink font-medium">2. Голоси дисидентів (Персоналії)</a>
-        <a href="#samvydav" class="mobile-link block py-2 px-3 rounded hover:bg-paper text-ink font-medium">3. Самвидав і цензура (Архів)</a>
-        <a href="#law" class="mobile-link block py-2 px-3 rounded hover:bg-paper text-ink font-medium">4. Право на інформацію</a>
-        <a href="#cyber" class="mobile-link block py-2 px-3 rounded hover:bg-paper text-ink font-medium">5. Кібербезпека (Практикум)</a>
-        <a href="#sources" class="mobile-link block py-2 px-3 rounded hover:bg-paper text-ink font-medium">6. Список джерел</a>
-      </div>
-    </header>
-
-    <main>
-      <!-- ================= ГОЛОВНА СТОРІНКА ================= -->
-      <section id="hero" class="relative pt-10 pb-16 md:py-20 border-b border-borderWarm bg-gradient-to-b from-paper to-paperDark/50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-wrap items-center gap-2 sm:gap-3 mb-6">
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider bg-crimson/10 text-crimson border border-crimson/20">
-              Інтегрований дослідницько-творчий проєкт
-            </span>
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white text-inkMuted border border-borderWarm">
-              Історія України + Інформатика
-            </span>
-            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-white text-ink font-medium border border-borderWarm">
-              Автор: Даніїл Маслов • 11 клас
-            </span>
-          </div>
-
-          <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-            <div class="lg:col-span-7 space-y-6">
-              <h1 class="font-serif text-3xl sm:text-5xl lg:text-[52px] font-bold text-ink leading-[1.12] tracking-tight">
-                Дисиденти: <span class="text-crimson italic font-normal">голос свободи</span> в епоху цифрових технологій
-              </h1>
-
-              <p class="text-base sm:text-lg text-inkMuted leading-relaxed">
-                Дослідження діяльності українських шістдесятників і дисидентів у добу «хрущовської відлиги», механізмів радянської цензури та еволюції способів поширення правдивої інформації — від підпільного машинописного самвидаву до сучасних стандартів кібербезпеки й конституційного права на свободу слова.
-              </p>
-
-              <div class="grid sm:grid-cols-2 gap-4 pt-2">
-                <div class="editorial-card rounded-xl p-5 border-l-4 border-l-crimson">
-                  <div class="text-xs font-mono uppercase tracking-wider text-crimson font-semibold mb-1.5">Мета проєкту</div>
-                  <p class="text-sm text-ink leading-relaxed">
-                    Дослідити діяльність українських дисидентів у період хрущовської відлиги, з'ясувати, як радянська цензура обмежувала свободу слова, та порівняти способи поширення інформації в минулому й сучасному цифровому світі. Навчитися перевіряти історичні джерела, аналізувати правові ситуації та дотримуватися правил кібербезпеки.
-                  </p>
-                </div>
-
-                <div class="editorial-card rounded-xl p-5 border-l-4 border-l-navy">
-                  <div class="text-xs font-mono uppercase tracking-wider text-navy font-semibold mb-1.5">Дослідницьке питання</div>
-                  <p class="text-sm text-ink font-medium leading-relaxed mb-2">
-                    «Як змінювалися можливості людини висловлювати власну думку та поширювати інформацію — від радянського самвидаву до сучасного інтернету?»
-                  </p>
-                  <p class="text-xs text-inkMuted leading-relaxed">
-                    Чому свобода слова, захист приватності та відповідальне використання інформації є життєво важливими сьогодні.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex flex-wrap gap-3 pt-2">
-                <a href="#thaw" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-ink text-white text-sm font-medium hover:bg-crimson transition-colors shadow-sm">
-                  Перейти до дослідження
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                </a>
-                <a href="#voices" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-ink border border-borderWarm text-sm font-medium hover:border-ink transition-colors">
-                  Біографії дисидентів (4)
-                </a>
-                <a href="#cyber" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-ink border border-borderWarm text-sm font-medium hover:border-ink transition-colors">
-                  Практикум із кібербезпеки (5 кейсів)
-                </a>
-              </div>
-            </div>
-
-            <!-- Інтерактивна панель: Самвидав vs Цифрова доба -->
-            <div class="lg:col-span-5">
-              <div class="bg-white rounded-2xl border border-borderWarm editorial-shadow overflow-hidden">
-                <div class="bg-paperDark px-5 py-4 border-b border-borderWarm flex items-center justify-between">
-                  <div>
-                    <span class="text-xs font-mono uppercase tracking-wider text-inkMuted block">Інтерактивна паралель</span>
-                    <h2 class="font-serif font-bold text-lg text-ink">Еволюція свободи слова</h2>
-                  </div>
-                  <div class="inline-flex rounded-lg bg-white p-1 border border-borderWarm text-xs font-medium">
-                    <button id="eraBtn1965" onclick="switchEra('1965')" class="px-3 py-1.5 rounded-md bg-crimson text-white transition-all">1960-ті: Самвидав</button>
-                    <button id="eraBtn2026" onclick="switchEra('2026')" class="px-3 py-1.5 rounded-md text-inkMuted hover:text-ink transition-all">Сучасність: Інтернет</button>
-                  </div>
-                </div>
-
-                <div id="eraContent" class="p-5 space-y-3.5"></div>
-
-                <div class="px-5 py-3.5 bg-paper/70 border-t border-borderWarm text-xs text-inkMuted flex items-center justify-between">
-                  <span>Теми: Хрущовська відлига • Кібербезпека</span>
-                  <span class="font-mono text-ink font-medium">1953 — 2026</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================= ЕТАП 1: ІСТОРІЯ ВІДЛИГИ ================= -->
-      <section id="thaw" class="py-16 md:py-20 border-b border-borderWarm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl mb-12">
-            <span class="text-xs font-mono uppercase tracking-widest text-crimson font-semibold">Етап 1 • Історичний контекст</span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-ink mt-1 mb-4">«Хрущовська відлига» та зародження дисидентського руху</h2>
-            <p class="text-inkMuted text-base leading-relaxed">
-              Період суспільно-політичних змін у СРСР після смерті Й. Сталіна дав поштовх духовній свободі покоління шістдесятників, але водночас оголив межі тоталітарного режиму, який не міг існувати без ідеологічної цензури.
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
-            <article class="editorial-card rounded-xl p-6">
-              <div class="w-8 h-8 rounded-lg bg-crimson/10 text-crimson font-mono font-bold text-sm flex items-center justify-center mb-4">01</div>
-              <h3 class="font-serif font-bold text-lg text-ink mb-2">Що таке хрущовська відлига та коли вона тривала?</h3>
-              <p class="text-sm text-inkMuted leading-relaxed">
-                <strong class="text-ink">«Хрущовська відлига» (1953–1964 рр.)</strong> — неофіційна назва періоду перебування при владі Микити Хрущова (від смерті Й. Сталіна у березні 1953 р. до усунення Хрущова у жовтні 1964 р.). Назва походить від повісті Іллі Еренбурга «Відлига» (1954). Характеризувалася частковою десталінізацією після ХХ з'їзду КПРС (1956), ліквідацією ГУЛАГу, реабілітацією частини жертв репресій та послабленням ідеологічного тиску на культуру.
-              </p>
-            </article>
-
-            <article class="editorial-card rounded-xl p-6">
-              <div class="w-8 h-8 rounded-lg bg-crimson/10 text-crimson font-mono font-bold text-sm flex items-center justify-center mb-4">02</div>
-              <h3 class="font-serif font-bold text-lg text-ink mb-2">Чому зберігалися цензура й переслідування інакомислячих?</h3>
-              <p class="text-sm text-inkMuted leading-relaxed">
-                Десталінізація мала контрольований характер: КПРС прагнула лише засудити «культ особи Сталіна», але зберегти однопартійну диктатуру та монополію марксизму-ленінізму. Відмова від попередньої цензури (<strong class="text-ink">Головліт УРСР</strong>) та контролю КДБ призвела б до правдивої дискусії про Голодомор, репресії та право України на вихід із СРСР. Тому критика ладу кваліфікувалася за <strong class="text-ink">ст. 62 КК УРСР</strong> як «антирадянська агітація і пропаганда».
-              </p>
-            </article>
-
-            <article class="editorial-card rounded-xl p-6">
-              <div class="w-8 h-8 rounded-lg bg-crimson/10 text-crimson font-mono font-bold text-sm flex items-center justify-center mb-4">03</div>
-              <h3 class="font-serif font-bold text-lg text-ink mb-2">Хто такі дисиденти та шістдесятники?</h3>
-              <p class="text-sm text-inkMuted leading-relaxed">
-                <strong class="text-ink">Шістдесятники</strong> — нова генерація української творчої інтелігенції кінця 1950-х — 1960-х рр. (Л. Костенко, В. Симоненко, І. Драч, М. Вінграновський, І. Світличний, А. Горська), яка виступала за гуманізм, свободу творчості й відродження української культури. Коли влада відповіла заборонами й арештами, частина з них перейшла до політичного опору — ставши <strong class="text-ink">дисидентами</strong> (інакомислячими), які відкрито й ненасильницьки відстоювали громадянські й національні права.
-              </p>
-            </article>
-
-            <article class="editorial-card rounded-xl p-6">
-              <div class="w-8 h-8 rounded-lg bg-navy/10 text-navy font-mono font-bold text-sm flex items-center justify-center mb-4">04</div>
-              <h3 class="font-serif font-bold text-lg text-ink mb-2">Що таке самвидав і яка його роль?</h3>
-              <p class="text-sm text-inkMuted leading-relaxed">
-                <strong class="text-ink">Самвидав</strong> — непідцензурне виготовлення та поширення літературних, публіцистичних і правозахисних творів поза офіційними видавництвами. Тексти передруковували на друкарських машинках під копірку (4–8 примірників за раз), перезнімали на фотоплівку чи записували на магнітофонні бобіни. Самвидав зруйнував інформаційну блокаду КДБ, а через <strong class="text-ink">«тамвидав»</strong> (публікації за кордоном) відкрив світові правду про репресії в Україні.
-              </p>
-            </article>
-
-            <article class="editorial-card rounded-xl p-6 md:col-span-2">
-              <div class="w-8 h-8 rounded-lg bg-navy/10 text-navy font-mono font-bold text-sm flex items-center justify-center mb-4">05</div>
-              <h3 class="font-serif font-bold text-lg text-ink mb-2">Які ідеї відстоювали українські дисиденти?</h3>
-              <div class="grid sm:grid-cols-2 gap-4 text-sm text-inkMuted pt-1">
-                <ul class="space-y-2">
-                  <li class="flex items-start gap-2">
-                    <span class="text-crimson font-bold">•</span>
-                    <span><strong class="text-ink">Захист від русифікації:</strong> збереження української мови, освіти, історичної пам'яті та національної культури (І. Дзюба, В. Стус).</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-crimson font-bold">•</span>
-                    <span><strong class="text-ink">Конституційні свободи і права людини:</strong> свобода слова, совісті, преси, мітингів та справедливого відкритого суду (УГГ, В. Чорновіл).</span>
-                  </li>
-                </ul>
-                <ul class="space-y-2">
-                  <li class="flex items-start gap-2">
-                    <span class="text-crimson font-bold">•</span>
-                    <span><strong class="text-ink">Державний суверенітет України:</strong> від вимоги реальної автономії УРСР до повної державної незалежності мирним шляхом (Л. Лук'яненко).</span>
-                  </li>
-                  <li class="flex items-start gap-2">
-                    <span class="text-crimson font-bold">•</span>
-                    <span><strong class="text-ink">Ліквідація каральної медицини та таборів:</strong> протести проти спецпсихлікарень і політичних таборів Мордовії та Пермської області.</span>
-                  </li>
-                </ul>
-              </div>
-            </article>
-          </div>
-
-          <!-- Інтерактивна хронологія -->
-          <div class="bg-white rounded-2xl border border-borderWarm p-6 sm:p-8 editorial-shadow">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-borderWarm">
-              <div>
-                <span class="text-xs font-mono uppercase tracking-wider text-crimson font-semibold">Історична хронологія (1953–1976)</span>
-                <h3 class="font-serif text-2xl font-bold text-ink">Ключові віхи відлиги та дисидентського руху</h3>
-              </div>
-              <span class="text-xs text-inkMuted">Натисніть на рік, щоб переглянути історичне значення події</span>
-            </div>
-
-            <div id="timelineButtons" class="flex flex-wrap gap-2 mb-6"></div>
-
-            <div id="timelineDetail" class="bg-paper rounded-xl p-5 sm:p-6 border border-borderWarm transition-all"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================= ГОЛОСИ ДИСИДЕНТІВ ================= -->
-      <section id="voices" class="py-16 md:py-20 border-b border-borderWarm bg-paperDark/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl mb-12">
-            <span class="text-xs font-mono uppercase tracking-widest text-crimson font-semibold">Етап 1 • Постаті опору</span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-ink mt-1 mb-4">Голоси дисидентів: біографії, ідеї та боротьба</h2>
-            <p class="text-inkMuted text-base leading-relaxed">
-              Чотири знакові постаті українського руху опору 1960–1980-х років. Для кожного діяча систематизовано біографічну довідку, основні світоглядні ідеї, конкретний приклад діяльності та історичні наслідки боротьби.
-            </p>
-          </div>
-
-          <div id="dissidentsGrid" class="grid md:grid-cols-2 gap-8"></div>
-        </div>
-      </section>
-
-      <!-- ================= ЕТАП 2: САМВИДАВ І ЦЕНЗУРА ================= -->
-      <section id="samvydav" class="py-16 md:py-20 border-b border-borderWarm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
-            <div class="max-w-3xl">
-              <span class="text-xs font-mono uppercase tracking-widest text-crimson font-semibold">Етап 2 • Дослідження інформації та цензури</span>
-              <h2 class="font-serif text-3xl sm:text-4xl font-bold text-ink mt-1 mb-4">Самвидав і радянська цензура: 6 історичних джерел</h2>
-              <p class="text-inkMuted text-base leading-relaxed">
-                Документовані матеріали музейних та архівних колекцій із зазначенням походження, дати створення, способу підпільного поширення та репресивної реакції радянської влади.
-              </p>
-            </div>
-
-            <button id="toggleRedactionBtn" onclick="toggleAllRedactions()" class="self-start lg:self-auto inline-flex items-center gap-2.5 px-4 py-2.5 rounded-lg bg-crimson text-white text-xs sm:text-sm font-medium hover:bg-ink transition-colors shadow-sm">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-              <span id="redactionBtnText">Розкрити цензуровані фрагменти в текстах</span>
-            </button>
-          </div>
-
-          <div id="sourcesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-        </div>
-      </section>
-
-      <!-- ================= ЕТАП 3: ПРАВО НА ІНФОРМАЦІЮ ================= -->
-      <section id="law" class="py-16 md:py-20 border-b border-borderWarm bg-paperDark/40">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl mb-12">
-            <span class="text-xs font-mono uppercase tracking-widest text-navy font-semibold">Етап 3 • Правові засади</span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-ink mt-1 mb-4">Право на інформацію в сучасній Україні</h2>
-            <p class="text-inkMuted text-base leading-relaxed">
-              Те, за що українські дисиденти отримували по 10–15 років таборів суворого режиму за ст. 62 КК УРСР, сьогодні закріплено як невід'ємні конституційні права кожної людини. Водночас свобода інформації передбачає чіткі правові обов'язки в цифровому просторі.
-            </p>
-          </div>
-
-          <div class="bg-white rounded-2xl border border-borderWarm overflow-hidden editorial-shadow mb-12">
-            <div class="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-borderWarm">
-              <div class="p-6 sm:p-8 bg-crimsonLight/40">
-                <div class="inline-block px-3 py-1 rounded text-xs font-mono font-semibold bg-crimson/10 text-crimson mb-3">
-                  Тоталітарна модель (УРСР, 1960–1980-ті)
-                </div>
-                <h3 class="font-serif text-xl font-bold text-ink mb-4">Державна монополія на істину та цензура</h3>
-                <ul class="space-y-3 text-sm text-inkMuted">
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-crimson font-bold">✕</span>
-                    <span><strong class="text-ink">Стаття 62 КК УРСР:</strong> зберігання чи поширення самвидаву каралося позбавленням волі до 7 років і засланням до 5 років.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-crimson font-bold">✕</span>
-                    <span><strong class="text-ink">Попередня цензура (Головліт):</strong> жодна книга, стаття чи виставка не могла вийти без дозвільного штампа цензора.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-crimson font-bold">✕</span>
-                    <span><strong class="text-ink">Порушення таємниці листування:</strong> перлюстрація пошти, прослуховування телефонів КДБ та вилучення друкарських машинок під час обшуків.</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="p-6 sm:p-8 bg-navyLight/30">
-                <div class="inline-block px-3 py-1 rounded text-xs font-mono font-semibold bg-navy/10 text-navy mb-3">
-                  Демократична модель (Україна, сьогодення)
-                </div>
-                <h3 class="font-serif text-xl font-bold text-ink mb-4">Конституційні гарантії та верховенство права</h3>
-                <ul class="space-y-3 text-sm text-inkMuted">
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-emerald-700 font-bold">✓</span>
-                    <span><strong class="text-ink">Стаття 15 Конституції України:</strong> цензура в Україні прямо заборонена; держава гарантує політичну та ідеологічну багатоманітність.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-emerald-700 font-bold">✓</span>
-                    <span><strong class="text-ink">Стаття 34 Конституції України:</strong> кожен має право вільно збирати, зберігати, використовувати і поширювати інформацію усно, письмово або в інший спосіб.</span>
-                  </li>
-                  <li class="flex items-start gap-2.5">
-                    <span class="text-emerald-700 font-bold">✓</span>
-                    <span><strong class="text-ink">Статті 31 та 32 Конституції України:</strong> гарантується таємниця листування і телефонних розмов та захист персональних даних.</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            <div class="editorial-card rounded-xl p-5">
-              <span class="text-xs font-mono font-semibold text-navy bg-navy/10 px-2.5 py-1 rounded">Ст. 34 Конституції України</span>
-              <h4 class="font-serif font-bold text-base text-ink mt-3 mb-2">Свобода думки і слова та її законні межі</h4>
-              <p class="text-xs text-inkMuted leading-relaxed">
-                Гарантує вільне вираження поглядів і переконань. Здійснення цього права може бути обмежене законом лише в інтересах національної безпеки, територіальної цілісності або для захисту репутації чи прав інших людей (зокрема заборона пропаганди війни та розголошення держтаємниці).
-              </p>
-            </div>
-
-            <div class="editorial-card rounded-xl p-5">
-              <span class="text-xs font-mono font-semibold text-navy bg-navy/10 px-2.5 py-1 rounded">Закон № 2657-XII та № 2939-VI</span>
-              <h4 class="font-serif font-bold text-base text-ink mt-3 mb-2">Про інформацію та доступ до публічної інформації</h4>
-              <p class="text-xs text-inkMuted leading-relaxed">
-                Закріплюють відкритість діяльності органів влади. Кожен громадянин має право надіслати інформаційний запит до державних структур і отримати відповідь протягом 5 робочих днів, а журналісти та дослідники мають вільний доступ до розсекречених архівів СБУ.
-              </p>
-            </div>
-
-            <div class="editorial-card rounded-xl p-5">
-              <span class="text-xs font-mono font-semibold text-navy bg-navy/10 px-2.5 py-1 rounded">Закон № 2297-VI (Ст. 32 КУ)</span>
-              <h4 class="font-serif font-bold text-base text-ink mt-3 mb-2">Захист персональних даних і приватності</h4>
-              <p class="text-xs text-inkMuted leading-relaxed">
-                Забороняє збирання, зберігання, використання та поширення конфіденційної інформації про особу без її згоди. У цифровому середовищі це захищає громадян від доксингу, незаконного зливу баз даних та несанкціонованого стеження.
-              </p>
-            </div>
-
-            <div class="editorial-card rounded-xl p-5">
-              <span class="text-xs font-mono font-semibold text-navy bg-navy/10 px-2.5 py-1 rounded">Закон № 2163-VIII та Розд. XVI ККУ</span>
-              <h4 class="font-serif font-bold text-base text-ink mt-3 mb-2">Кібербезпека та відповідальність за кіберзлочини</h4>
-              <p class="text-xs text-inkMuted leading-relaxed">
-                Визначають правові основи захисту національного кіберпростору (CERT-UA, НКЦК). Статті 361–363-1 Кримінального кодексу України встановлюють відповідальність за несанкціонований злом систем, поширення шкідливого ПЗ, фішинг і DDoS-атаки.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================= КІБЕРБЕЗПЕКА: ПРАКТИЧНІ СИТУАЦІЇ ================= -->
-      <section id="cyber" class="py-16 md:py-20 border-b border-borderWarm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl mb-10">
-            <span class="text-xs font-mono uppercase tracking-widest text-crimson font-semibold">Етап 3–4 • Інформатика та цифрова безпека</span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-ink mt-1 mb-4">Кібербезпека: аналіз 5 практичних цифрових і правових ситуацій</h2>
-            <p class="text-inkMuted text-base leading-relaxed">
-              Розбір реальних правових та кібербезпекових ситуацій у мережі Інтернет: виявлення загрози, правова кваліфікація за законодавством України, алгоритм безпечної поведінки та історична паралель із досвідом дисидентів.
-            </p>
-          </div>
-
-          <div class="grid lg:grid-cols-12 gap-8 items-start">
-            <div id="cyberTabsList" class="lg:col-span-5 space-y-2.5"></div>
-            <div id="cyberCaseDetail" class="lg:col-span-7 bg-white rounded-2xl border border-borderWarm p-6 sm:p-8 editorial-shadow"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ================= СПИСОК ВИКОРИСТАНИХ ДЖЕРЕЛ ================= -->
-      <section id="sources" class="py-16 md:py-20 bg-paperDark/60">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div class="max-w-3xl mb-10">
-            <span class="text-xs font-mono uppercase tracking-widest text-inkMuted font-semibold">Етап 4–5 • Бібліографія та архіви</span>
-            <h2 class="font-serif text-3xl font-bold text-ink mt-1 mb-3">Список використаних джерел та архівних колекцій</h2>
-            <p class="text-sm text-inkMuted">
-              Усі історичні документи, біографічні матеріали та нормативно-правові акти перевірені за верифікованими державними, архівними та науковими базами даних.
-            </p>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-white rounded-xl p-6 border border-borderWarm">
-              <h3 class="font-serif font-bold text-lg text-ink mb-4 pb-2 border-b border-borderWarm">1. Історичні джерела та архіви</h3>
-              <ol class="space-y-3 text-xs text-inkMuted list-decimal list-inside leading-relaxed">
-                <li><strong class="text-ink">Електронний архів Українського визвольного руху (avr.org.ua)</strong> — оцифровані колекції документів КДБ УРСР, випусків «Українського вісника» та самвидаву.</li>
-                <li><strong class="text-ink">Віртуальний музей Дисидентського руху в Україні (museum.khpg.org)</strong> — Харківська правозахисна група: біографічні довідки В. Чорновола, В. Стуса, І. Дзюби, А. Горської.</li>
-                <li><strong class="text-ink">Галузевий державний архів СБУ (ГДА СБУ, ф. 16)</strong> — розсекречені доповідні записки КДБ при РМ УРСР щодо операції «Блок» (1972).</li>
-                <li><strong class="text-ink">Дзюба І. М.</strong> «Інтернаціоналізм чи русифікація?». — Мюнхен: Сучасність, 1968 (рукопис 1965 р.).</li>
-                <li><strong class="text-ink">Чорновіл В. М.</strong> «Лихо з розуму (Портрети двадцяти "злочинців")». — Париж: Перша українська друкарня у Франції, 1967.</li>
-              </ol>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 border border-borderWarm">
-              <h3 class="font-serif font-bold text-lg text-ink mb-4 pb-2 border-b border-borderWarm">2. Нормативно-правові акти України</h3>
-              <ol class="space-y-3 text-xs text-inkMuted list-decimal list-inside leading-relaxed">
-                <li><strong class="text-ink">Конституція України</strong> від 28.06.1996 № 254к/96-ВР (статті 15, 31, 32, 34) — Офіційний вебпортал Верховної Ради України (zakon.rada.gov.ua).</li>
-                <li><strong class="text-ink">Закон України «Про інформацію»</strong> від 02.10.1992 № 2657-XII.</li>
-                <li><strong class="text-ink">Закон України «Про доступ до публічної інформації»</strong> від 13.01.2011 № 2939-VI.</li>
-                <li><strong class="text-ink">Закон України «Про захист персональних даних»</strong> від 01.06.2010 № 2297-VI.</li>
-                <li><strong class="text-ink">Закон України «Про основні засади забезпечення кібербезпеки України»</strong> від 05.10.2017 № 2163-VIII та Розділ XVI Кримінального кодексу України (ст. 361–363-1).</li>
-              </ol>
-            </div>
-
-            <div class="bg-white rounded-xl p-6 border border-borderWarm">
-              <h3 class="font-serif font-bold text-lg text-ink mb-4 pb-2 border-b border-borderWarm">3. Наукові публікації та фотоархіви</h3>
-              <ol class="space-y-3 text-xs text-inkMuted list-decimal list-inside leading-relaxed">
-                <li><strong class="text-ink">Касьянов Г. В.</strong> Незгодні: українська інтелігенція в русі опору 1960–80-х років. — К.: Либідь, 1995.</li>
-                <li><strong class="text-ink">Український інститут національної пам'яті (uinp.gov.ua)</strong> — інформаційні матеріали до історії шістдесятництва та Української Гельсінської групи.</li>
-                <li><strong class="text-ink">Музей шістдесятництва (м. Київ)</strong> — архівні фотографії вітража «Шевченко. Мати» (1964) та експозиції самвидаву.</li>
-                <li><strong class="text-ink">Урядова команда реагування на комп'ютерні надзвичайні події України CERT-UA (cert.gov.ua)</strong> — рекомендації з кібергігієни та протидії фішингу.</li>
-                <li><strong class="text-ink">Wikimedia Commons</strong> — архівні фотопортрети українських діячів 1960–1970-х рр. (суспільне надбання / CC BY-SA).</li>
-              </ol>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Футер -->
-    <footer class="bg-ink text-paper py-10 border-t border-borderWarm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-paper/70">
-        <div>
-          <p class="font-serif text-base text-white font-semibold">«Дисиденти: голос свободи в епоху цифрових технологій»</p>
-          <p class="mt-1">Інтегрований дослідницько-творчий проєкт з історії України та інформатики • 11 клас</p>
-        </div>
-        <div class="text-center sm:text-right font-mono">
-          <p class="text-white">Автор: Даніїл Маслов (11 клас)</p>
-          <p class="mt-0.5 text-paper/60">2026 • Освітній цифровий продукт</p>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Модальне вікно для детального перегляду історичного джерела -->
-    <div id="sourceModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-ink/70 backdrop-blur-sm p-4">
-      <div class="bg-white rounded-2xl max-w-2xl w-full border border-borderWarm editorial-shadow overflow-hidden max-h-[90vh] flex flex-col">
-        <div class="px-6 py-4 bg-paperDark border-b border-borderWarm flex items-center justify-between">
-          <div>
-            <span id="modalSourceType" class="text-xs font-mono uppercase tracking-wider text-crimson font-semibold">Архівне джерело</span>
-            <h3 id="modalSourceTitle" class="font-serif text-xl font-bold text-ink"></h3>
-          </div>
-          <button onclick="closeSourceModal()" class="p-1.5 rounded-lg text-inkMuted hover:text-ink hover:bg-white transition-colors" aria-label="Закрити">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-        </div>
-        <div id="modalSourceBody" class="p-6 overflow-y-auto space-y-4 text-sm text-ink leading-relaxed"></div>
-        <div class="px-6 py-3.5 bg-paper border-t border-borderWarm flex justify-end">
-          <button onclick="closeSourceModal()" class="px-4 py-2 rounded-lg bg-ink text-white text-xs font-medium hover:bg-crimson transition-colors">
-            Закрити картку джерела
-          </button>
-        </div>
-      </div>
-    </div>
-  </template>
-
   <script>
-    // ================= ЗАХИСТ ДОМЕНУ ТА АНТИ-ПАРСЕР (danya1a.github.io/dissidents-project) =================
+    // ================= 1. ЗАХИСТ ДОМЕНУ ТА ДИНАМІЧНИЙ МОНТАЖ DOM =================
     (function () {
       const _0xHosts = [
         atob('ZGFueWExYS5naXRodWIuaW8='), // danya1a.github.io
@@ -581,22 +463,13 @@
         navigator.webdriver === true ||
         /saveweb2zip|httrack|webcopy|wget|curl|python|scrapy|headless|phantomjs|puppeteer|playwright/i.test(ua);
 
-      // Якщо відкрито з локального диска (file://) після скачування ZIP або на чужому хостингу — очищуємо документ
       if (proto === 'file:' || isClonerBot || (!isMyGithub && !isLocalDev)) {
         document.documentElement.innerHTML = '';
         try { window.stop(); } catch (e) {}
         throw new Error('Unauthorized Environment');
       }
 
-      // Монтуємо шаблон у DOM тільки після успішної перевірки
-      const mount = document.getElementById('app-mount');
-      const tpl = document.getElementById('secure-payload');
-      if (mount && tpl) {
-        mount.appendChild(tpl.content.cloneNode(true));
-        tpl.remove();
-      }
-
-      // Блокування клавіш перегляду коду та збереження
+      // Блокування гарячих клавіш і правого кліку
       document.addEventListener('contextmenu', (e) => e.preventDefault());
       document.addEventListener('dragstart', (e) => e.preventDefault());
       document.addEventListener('keydown', (e) => {
@@ -612,9 +485,399 @@
           return false;
         }
       });
+
+      // Монтуємо розмітку сайту
+      const mount = document.getElementById('app-mount');
+      mount.innerHTML = `
+        <header class="site-header">
+          <div class="container-main header-inner">
+            <a href="#hero" class="brand-link">
+              <div class="brand-badge">Д</div>
+              <div>
+                <span class="font-serif font-bold text-lg" style="display:block; line-height:1.1;">Голос Свободи</span>
+                <span class="font-mono text-xs text-muted" style="text-transform:uppercase; letter-spacing:0.06em;">Історія + Інформатика • 11 клас</span>
+              </div>
+            </a>
+
+            <nav class="desktop-nav">
+              <a href="#hero">Головна</a>
+              <a href="#thaw">Історія відлиги</a>
+              <a href="#voices">Голоси дисидентів</a>
+              <a href="#samvydav">Самвидав і цензура</a>
+              <a href="#law">Право на інформацію</a>
+              <a href="#cyber">Кібербезпека</a>
+              <a href="#sources">Джерела</a>
+            </nav>
+
+            <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Меню">
+              <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+
+          <div id="mobileMenu" class="mobile-menu-panel">
+            <a href="#hero" class="mobile-link">Головна сторінка</a>
+            <a href="#thaw" class="mobile-link">1. Історія відлиги та хронологія</a>
+            <a href="#voices" class="mobile-link">2. Голоси дисидентів (Персоналії)</a>
+            <a href="#samvydav" class="mobile-link">3. Самвидав і цензура (Архів)</a>
+            <a href="#law" class="mobile-link">4. Право на інформацію</a>
+            <a href="#cyber" class="mobile-link">5. Кібербезпека (Практикум)</a>
+            <a href="#sources" class="mobile-link">6. Список джерел</a>
+          </div>
+        </header>
+
+        <main>
+          <!-- ГОЛОВНА СТОРІНКА -->
+          <section id="hero" class="section-block" style="background: linear-gradient(180deg, #F8F6F1 0%, #EFECE4 100%);">
+            <div class="container-main">
+              <div class="badge-row">
+                <span class="pill-badge crimson">Інтегрований дослідницько-творчий проєкт</span>
+                <span class="pill-badge font-mono">Історія України + Інформатика</span>
+                <span class="pill-badge font-mono" style="color: var(--ink);">Автор: Даніїл Маслов • 11 клас</span>
+              </div>
+
+              <div class="hero-grid">
+                <div>
+                  <h1 class="hero-title">
+                    Дисиденти: <em>голос свободи</em> в епоху цифрових технологій
+                  </h1>
+
+                  <p class="text-lg text-muted mb-6">
+                    Дослідження діяльності українських шістдесятників і дисидентів у добу «хрущовської відлиги», механізмів радянської цензури та еволюції способів поширення правдивої інформації — від підпільного машинописного самвидаву до сучасних стандартів кібербезпеки й конституційного права на свободу слова.
+                  </p>
+
+                  <div class="grid-2 mb-6">
+                    <div class="editorial-card accent-left-crimson p-5">
+                      <div class="font-mono text-xs text-crimson font-semibold mb-2" style="text-transform:uppercase; letter-spacing:0.06em;">Мета проєкту</div>
+                      <p class="text-sm">
+                        Дослідити діяльність українських дисидентів у період хрущовської відлиги, з'ясувати, як радянська цензура обмежувала свободу слова, та порівняти способи поширення інформації в минулому й сучасному цифровому світі. Навчитися перевіряти історичні джерела, аналізувати правові ситуації та дотримуватися правил кібербезпеки.
+                      </p>
+                    </div>
+
+                    <div class="editorial-card accent-left-navy p-5">
+                      <div class="font-mono text-xs text-navy font-semibold mb-2" style="text-transform:uppercase; letter-spacing:0.06em;">Дослідницьке питання</div>
+                      <p class="text-sm font-semibold mb-2">
+                        «Як змінювалися можливості людини висловлювати власну думку та поширювати інформацію — від радянського самвидаву до сучасного інтернету?»
+                      </p>
+                      <p class="text-xs text-muted">
+                        Чому свобода слова, захист приватності та відповідальне використання інформації є життєво важливими сьогодні.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="flex-wrap-gap">
+                    <a href="#thaw" class="btn-primary">Перейти до дослідження ↓</a>
+                    <a href="#voices" class="btn-secondary">Біографії дисидентів (4)</a>
+                    <a href="#cyber" class="btn-secondary">Практикум із кібербезпеки (5 кейсів)</a>
+                  </div>
+                </div>
+
+                <!-- Інтерактивна панель порівняння епох -->
+                <div class="editorial-card" style="overflow:hidden;">
+                  <div class="flex-between p-5" style="background: var(--paper-dark); border-bottom: 1px solid var(--border-warm);">
+                    <div>
+                      <span class="font-mono text-xs text-muted" style="text-transform:uppercase; display:block;">Інтерактивна паралель</span>
+                      <h2 class="font-serif font-bold text-lg">Еволюція свободи слова</h2>
+                    </div>
+                    <div style="display:inline-flex; background:#fff; padding:4px; border-radius:8px; border:1px solid var(--border-warm); gap:4px;">
+                      <button id="eraBtn1965" onclick="switchEra('1965')" style="padding:6px 12px; border-radius:6px; font-size:0.75rem; font-weight:600; background:var(--crimson); color:#fff;">1960-ті: Самвидав</button>
+                      <button id="eraBtn2026" onclick="switchEra('2026')" style="padding:6px 12px; border-radius:6px; font-size:0.75rem; font-weight:600; color:var(--ink-muted);">Сучасність: Інтернет</button>
+                    </div>
+                  </div>
+
+                  <div id="eraContent" class="p-5" style="display:flex; flex-direction:column; gap:0.85rem;"></div>
+
+                  <div class="flex-between p-4 text-xs text-muted" style="background: var(--paper); border-top: 1px solid var(--border-warm);">
+                    <span>Теми: Хрущовська відлига • Кібербезпека</span>
+                    <span class="font-mono font-semibold" style="color:var(--ink);">1953 — 2026</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ЕТАП 1: ІСТОРІЯ ВІДЛИГИ -->
+          <section id="thaw" class="section-block">
+            <div class="container-main">
+              <div class="mb-10" style="max-width: 780px;">
+                <span class="section-kicker">Етап 1 • Історичний контекст</span>
+                <h2 class="section-title">«Хрущовська відлига» та зародження дисидентського руху</h2>
+                <p class="text-base text-muted">
+                  Період суспільно-політичних змін у СРСР після смерті Й. Сталіна дав поштовх духовній свободі покоління шістдесятників, але водночас оголив межі тоталітарного режиму, який не міг існувати без ідеологічної цензури.
+                </p>
+              </div>
+
+              <div class="grid-3 mb-12">
+                <article class="editorial-card p-6">
+                  <div class="font-mono font-bold text-xs text-crimson mb-3" style="background:rgba(158,42,43,0.1); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;">01</div>
+                  <h3 class="font-serif font-bold text-lg mb-2">Що таке хрущовська відлига та коли вона тривала?</h3>
+                  <p class="text-sm text-muted">
+                    <strong style="color:var(--ink);">«Хрущовська відлига» (1953–1964 рр.)</strong> — неофіційна назва періоду перебування при владі Микити Хрущова (від смерті Й. Сталіна у березні 1953 р. до усунення Хрущова у жовтні 1964 р.). Назва походить від повісті Іллі Еренбурга «Відлига» (1954). Характеризувалася частковою десталінізацією після ХХ з'їзду КПРС (1956), ліквідацією ГУЛАГу, реабілітацією частини жертв репресій та послабленням ідеологічного тиску на культуру.
+                  </p>
+                </article>
+
+                <article class="editorial-card p-6">
+                  <div class="font-mono font-bold text-xs text-crimson mb-3" style="background:rgba(158,42,43,0.1); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;">02</div>
+                  <h3 class="font-serif font-bold text-lg mb-2">Чому зберігалися цензура й переслідування інакомислячих?</h3>
+                  <p class="text-sm text-muted">
+                    Десталінізація мала контрольований характер: КПРС прагнула лише засудити «культ особи Сталіна», але зберегти однопартійну диктатуру та монополію марксизму-ленінізму. Відмова від попередньої цензури (<strong style="color:var(--ink);">Головліт УРСР</strong>) та контролю КДБ призвела б до правдивої дискусії про Голодомор, репресії та право України на вихід із СРСР. Тому критика ладу кваліфікувалася за <strong style="color:var(--ink);">ст. 62 КК УРСР</strong> як «антирадянська агітація і пропаганда».
+                  </p>
+                </article>
+
+                <article class="editorial-card p-6">
+                  <div class="font-mono font-bold text-xs text-crimson mb-3" style="background:rgba(158,42,43,0.1); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;">03</div>
+                  <h3 class="font-serif font-bold text-lg mb-2">Хто такі дисиденти та шістдесятники?</h3>
+                  <p class="text-sm text-muted">
+                    <strong style="color:var(--ink);">Шістдесятники</strong> — нова генерація української творчої інтелігенції кінця 1950-х — 1960-х рр. (Л. Костенко, В. Симоненко, І. Драч, М. Вінграновський, І. Світличний, А. Горська), яка виступала за гуманізм, свободу творчості й відродження української культури. Коли влада відповіла заборонами й арештами, частина з них перейшла до політичного опору — ставши <strong style="color:var(--ink);">дисидентами</strong> (інакомислячими), які відкрито й ненасильницьки відстоювали громадянські й національні права.
+                  </p>
+                </article>
+
+                <article class="editorial-card p-6">
+                  <div class="font-mono font-bold text-xs text-navy mb-3" style="background:rgba(30,58,95,0.1); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;">04</div>
+                  <h3 class="font-serif font-bold text-lg mb-2">Що таке самвидав і яка його роль?</h3>
+                  <p class="text-sm text-muted">
+                    <strong style="color:var(--ink);">Самвидав</strong> — непідцензурне виготовлення та поширення літературних, публіцистичних і правозахисних творів поза офіційними видавництвами. Тексти передруковували на друкарських машинках під копірку (4–8 примірників за раз), перезнімали на фотоплівку чи записували на магнітофонні бобіни. Самвидав зруйнував інформаційну блокаду КДБ, а через <strong style="color:var(--ink);">«тамвидав»</strong> (публікації за кордоном) відкрив світові правду про репресії в Україні.
+                  </p>
+                </article>
+
+                <article class="editorial-card p-6 span-2-md">
+                  <div class="font-mono font-bold text-xs text-navy mb-3" style="background:rgba(30,58,95,0.1); width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center;">05</div>
+                  <h3 class="font-serif font-bold text-lg mb-3">Які ідеї відстоювали українські дисиденти?</h3>
+                  <div class="grid-2 text-sm text-muted">
+                    <div style="display:flex; flex-direction:column; gap:0.65rem;">
+                      <div><strong style="color:var(--crimson);">• Захист від русифікації:</strong> збереження української мови, освіти, історичної пам'яті та національної культури (І. Дзюба, В. Стус).</div>
+                      <div><strong style="color:var(--crimson);">• Конституційні свободи і права людини:</strong> свобода слова, совісті, преси, мітингів та справедливого відкритого суду (УГГ, В. Чорновіл).</div>
+                    </div>
+                    <div style="display:flex; flex-direction:column; gap:0.65rem;">
+                      <div><strong style="color:var(--crimson);">• Державний суверенітет України:</strong> від вимоги реальної автономії УРСР до повної державної незалежності мирним шляхом (Л. Лук'яненко).</div>
+                      <div><strong style="color:var(--crimson);">• Ліквідація каральної медицини та таборів:</strong> протести проти спецпсихлікарень і політичних таборів Мордовії та Пермської області.</div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <!-- Інтерактивна хронологія -->
+              <div class="editorial-card p-6">
+                <div class="flex-between mb-4" style="padding-bottom:1rem; border-bottom:1px solid var(--border-warm);">
+                  <div>
+                    <span class="section-kicker">Історична хронологія (1953–1976)</span>
+                    <h3 class="font-serif font-bold text-2xl">Ключові віхи відлиги та дисидентського руху</h3>
+                  </div>
+                  <span class="text-xs text-muted">Натисніть на рік, щоб переглянути історичне значення події</span>
+                </div>
+
+                <div id="timelineButtons" class="flex-wrap-gap mb-6"></div>
+                <div id="timelineDetail" class="p-5" style="background:var(--paper); border-radius:12px; border:1px solid var(--border-warm);"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ГОЛОСИ ДИСИДЕНТІВ -->
+          <section id="voices" class="section-block section-alt">
+            <div class="container-main">
+              <div class="mb-10" style="max-width: 780px;">
+                <span class="section-kicker">Етап 1 • Постаті опору</span>
+                <h2 class="section-title">Голоси дисидентів: біографії, ідеї та боротьба</h2>
+                <p class="text-base text-muted">
+                  Чотири знакові постаті українського руху опору 1960–1980-х років. Для кожного діяча систематизовано біографічну довідку, основні світоглядні ідеї, конкретний приклад діяльності та історичні наслідки боротьби.
+                </p>
+              </div>
+
+              <div id="dissidentsGrid" class="grid-2"></div>
+            </div>
+          </section>
+
+          <!-- ЕТАП 2: САМВИДАВ І ЦЕНЗУРА -->
+          <section id="samvydav" class="section-block">
+            <div class="container-main">
+              <div class="flex-between mb-10">
+                <div style="max-width: 740px;">
+                  <span class="section-kicker">Етап 2 • Дослідження інформації та цензури</span>
+                  <h2 class="section-title">Самвидав і радянська цензура: 6 історичних джерел</h2>
+                  <p class="text-base text-muted">
+                    Документовані матеріали музейних та архівних колекцій із зазначенням походження, дати створення, способу підпільного поширення та репресивної реакції радянської влади.
+                  </p>
+                </div>
+
+                <button id="toggleRedactionBtn" onclick="toggleAllRedactions()" class="btn-primary" style="background:var(--crimson);">
+                  <span id="redactionBtnText">Розкрити цензуровані фрагменти в текстах</span>
+                </button>
+              </div>
+
+              <div id="sourcesGrid" class="grid-3"></div>
+            </div>
+          </section>
+
+          <!-- ЕТАП 3: ПРАВО НА ІНФОРМАЦІЮ -->
+          <section id="law" class="section-block section-alt">
+            <div class="container-main">
+              <div class="mb-10" style="max-width: 780px;">
+                <span class="section-kicker" style="color:var(--navy);">Етап 3 • Правові засади</span>
+                <h2 class="section-title">Право на інформацію в сучасній Україні</h2>
+                <p class="text-base text-muted">
+                  Те, за що українські дисиденти отримували по 10–15 років таборів суворого режиму за ст. 62 КК УРСР, сьогодні закріплено як невід'ємні конституційні права кожної людини. Водночас свобода інформації передбачає чіткі правові обов'язки в цифровому просторі.
+                </p>
+              </div>
+
+              <div class="grid-2 mb-10">
+                <div class="editorial-card p-6" style="background: var(--crimson-light); border-color: rgba(158,42,43,0.25);">
+                  <span class="pill-badge crimson mb-3">Тоталітарна модель (УРСР, 1960–1980-ті)</span>
+                  <h3 class="font-serif font-bold text-xl mb-3">Державна монополія на істину та цензура</h3>
+                  <div class="text-sm text-muted" style="display:flex; flex-direction:column; gap:0.75rem;">
+                    <div><strong class="text-crimson">✕ Стаття 62 КК УРСР:</strong> зберігання чи поширення самвидаву каралося позбавленням волі до 7 років і засланням до 5 років.</div>
+                    <div><strong class="text-crimson">✕ Попередня цензура (Головліт):</strong> жодна книга, стаття чи виставка не могла вийти без дозвільного штампа цензора.</div>
+                    <div><strong class="text-crimson">✕ Порушення таємниці листування:</strong> перлюстрація пошти, прослуховування телефонів КДБ та вилучення друкарських машинок під час обшуків.</div>
+                  </div>
+                </div>
+
+                <div class="editorial-card p-6" style="background: var(--navy-light); border-color: rgba(30,58,95,0.25);">
+                  <span class="pill-badge font-mono mb-3" style="color:var(--navy);">Демократична модель (Україна, сьогодення)</span>
+                  <h3 class="font-serif font-bold text-xl mb-3">Конституційні гарантії та верховенство права</h3>
+                  <div class="text-sm text-muted" style="display:flex; flex-direction:column; gap:0.75rem;">
+                    <div><strong style="color:var(--emerald-text);">✓ Стаття 15 Конституції України:</strong> цензура в Україні прямо заборонена; держава гарантує політичну та ідеологічну багатоманітність.</div>
+                    <div><strong style="color:var(--emerald-text);">✓ Стаття 34 Конституції України:</strong> кожен має право вільно збирати, зберігати, використовувати і поширювати інформацію усно, письмово або в інший спосіб.</div>
+                    <div><strong style="color:var(--emerald-text);">✓ Статті 31 та 32 Конституції України:</strong> гарантується таємниця листування і телефонних розмов та захист персональних даних.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid-4">
+                <div class="editorial-card p-5">
+                  <span class="font-mono text-xs text-navy font-semibold" style="background:rgba(30,58,95,0.1); padding:3px 8px; border-radius:5px;">Ст. 34 Конституції України</span>
+                  <h4 class="font-serif font-bold text-base mt-3 mb-2">Свобода думки і слова та її законні межі</h4>
+                  <p class="text-xs text-muted">
+                    Гарантує вільне вираження поглядів і переконань. Здійснення цього права може бути обмежене законом лише в інтересах національної безпеки, територіальної цілісності або для захисту репутації чи прав інших людей.
+                  </p>
+                </div>
+
+                <div class="editorial-card p-5">
+                  <span class="font-mono text-xs text-navy font-semibold" style="background:rgba(30,58,95,0.1); padding:3px 8px; border-radius:5px;">Закон № 2657-XII та № 2939-VI</span>
+                  <h4 class="font-serif font-bold text-base mt-3 mb-2">Про інформацію та доступ до публічної інформації</h4>
+                  <p class="text-xs text-muted">
+                    Закріплюють відкритість діяльності органів влади. Кожен громадянин має право надіслати інформаційний запит до державних структур, а дослідники мають вільний доступ до розсекречених архівів СБУ.
+                  </p>
+                </div>
+
+                <div class="editorial-card p-5">
+                  <span class="font-mono text-xs text-navy font-semibold" style="background:rgba(30,58,95,0.1); padding:3px 8px; border-radius:5px;">Закон № 2297-VI (Ст. 32 КУ)</span>
+                  <h4 class="font-serif font-bold text-base mt-3 mb-2">Захист персональних даних і приватності</h4>
+                  <p class="text-xs text-muted">
+                    Забороняє збирання, зберігання, використання та поширення конфіденційної інформації про особу без її згоди. Захищає громадян від доксингу, незаконного зливу баз даних та стеження.
+                  </p>
+                </div>
+
+                <div class="editorial-card p-5">
+                  <span class="font-mono text-xs text-navy font-semibold" style="background:rgba(30,58,95,0.1); padding:3px 8px; border-radius:5px;">Закон № 2163-VIII та Розд. XVI ККУ</span>
+                  <h4 class="font-serif font-bold text-base mt-3 mb-2">Кібербезпека та відповідальність за кіберзлочини</h4>
+                  <p class="text-xs text-muted">
+                    Визначають правові основи захисту національного кіберпростору (CERT-UA). Статті 361–363-1 Кримінального кодексу України встановлюють відповідальність за злом систем, шкідливе ПЗ, фішинг і DDoS-атаки.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- КІБЕРБЕЗПЕКА: ПРАКТИЧНІ СИТУАЦІЇ -->
+          <section id="cyber" class="section-block">
+            <div class="container-main">
+              <div class="mb-10" style="max-width: 780px;">
+                <span class="section-kicker">Етап 3–4 • Інформатика та цифрова безпека</span>
+                <h2 class="section-title">Кібербезпека: аналіз 5 практичних цифрових і правових ситуацій</h2>
+                <p class="text-base text-muted">
+                  Розбір реальних правових та кібербезпекових ситуацій у мережі Інтернет: виявлення загрози, правова кваліфікація за законодавством України, алгоритм безпечної поведінки та історична паралель із досвідом дисидентів.
+                </p>
+              </div>
+
+              <div class="cyber-layout">
+                <div id="cyberTabsList" style="display:flex; flex-direction:column; gap:0.65rem;"></div>
+                <div id="cyberCaseDetail" class="editorial-card p-6"></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- СПИСОК ВИКОРИСТАНИХ ДЖЕРЕЛ -->
+          <section id="sources" class="section-block section-alt">
+            <div class="container-main">
+              <div class="mb-8" style="max-width: 780px;">
+                <span class="section-kicker" style="color:var(--ink-muted);">Етап 4–5 • Бібліографія та архіви</span>
+                <h2 class="section-title">Список використаних джерел та архівних колекцій</h2>
+                <p class="text-sm text-muted">
+                  Усі історичні документи, біографічні матеріали та нормативно-правові акти перевірені за верифікованими державними, архівними та науковими базами даних.
+                </p>
+              </div>
+
+              <div class="grid-3">
+                <div class="editorial-card p-6">
+                  <h3 class="font-serif font-bold text-lg mb-3" style="padding-bottom:0.5rem; border-bottom:1px solid var(--border-warm);">1. Історичні джерела та архіви</h3>
+                  <ol class="text-xs text-muted" style="padding-left:1.1rem; display:flex; flex-direction:column; gap:0.65rem;">
+                    <li><strong style="color:var(--ink);">Електронний архів Українського визвольного руху (avr.org.ua)</strong> — оцифровані колекції документів КДБ УРСР, випусків «Українського вісника» та самвидаву.</li>
+                    <li><strong style="color:var(--ink);">Віртуальний музей Дисидентського руху в Україні (museum.khpg.org)</strong> — Харківська правозахисна група: біографічні довідки В. Чорновола, В. Стуса, І. Дзюби, А. Горської.</li>
+                    <li><strong style="color:var(--ink);">Галузевий державний архів СБУ (ГДА СБУ, ф. 16)</strong> — розсекречені доповідні записки КДБ при РМ УРСР щодо операції «Блок» (1972).</li>
+                    <li><strong style="color:var(--ink);">Дзюба І. М.</strong> «Інтернаціоналізм чи русифікація?». — Мюнхен: Сучасність, 1968 (рукопис 1965 р.).</li>
+                    <li><strong style="color:var(--ink);">Чорновіл В. М.</strong> «Лихо з розуму (Портрети двадцяти "злочинців")». — Париж: Перша українська друкарня у Франції, 1967.</li>
+                  </ol>
+                </div>
+
+                <div class="editorial-card p-6">
+                  <h3 class="font-serif font-bold text-lg mb-3" style="padding-bottom:0.5rem; border-bottom:1px solid var(--border-warm);">2. Нормативно-правові акти України</h3>
+                  <ol class="text-xs text-muted" style="padding-left:1.1rem; display:flex; flex-direction:column; gap:0.65rem;">
+                    <li><strong style="color:var(--ink);">Конституція України</strong> від 28.06.1996 № 254к/96-ВР (статті 15, 31, 32, 34) — Офіційний вебпортал Верховної Ради України (zakon.rada.gov.ua).</li>
+                    <li><strong style="color:var(--ink);">Закон України «Про інформацію»</strong> від 02.10.1992 № 2657-XII.</li>
+                    <li><strong style="color:var(--ink);">Закон України «Про доступ до публічної інформації»</strong> від 13.01.2011 № 2939-VI.</li>
+                    <li><strong style="color:var(--ink);">Закон України «Про захист персональних даних»</strong> від 01.06.2010 № 2297-VI.</li>
+                    <li><strong style="color:var(--ink);">Закон України «Про основні засади забезпечення кібербезпеки України»</strong> від 05.10.2017 № 2163-VIII та Розділ XVI КК України (ст. 361–363-1).</li>
+                  </ol>
+                </div>
+
+                <div class="editorial-card p-6">
+                  <h3 class="font-serif font-bold text-lg mb-3" style="padding-bottom:0.5rem; border-bottom:1px solid var(--border-warm);">3. Наукові публікації та фотоархіви</h3>
+                  <ol class="text-xs text-muted" style="padding-left:1.1rem; display:flex; flex-direction:column; gap:0.65rem;">
+                    <li><strong style="color:var(--ink);">Касьянов Г. В.</strong> Незгодні: українська інтелігенція в русі опору 1960–80-х років. — К.: Либідь, 1995.</li>
+                    <li><strong style="color:var(--ink);">Український інститут національної пам'яті (uinp.gov.ua)</strong> — інформаційні матеріали до історії шістдесятництва та Української Гельсінської групи.</li>
+                    <li><strong style="color:var(--ink);">Музей шістдесятництва (м. Київ)</strong> — архівні фотографії вітража «Шевченко. Мати» (1964) та експозиції самвидаву.</li>
+                    <li><strong style="color:var(--ink);">CERT-UA (cert.gov.ua)</strong> — рекомендації з кібергігієни та протидії фішингу.</li>
+                    <li><strong style="color:var(--ink);">Wikimedia Commons</strong> — архівні фотопортрети українських діячів 1960–1970-х рр.</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+
+        <footer style="background: var(--ink); color: var(--paper); padding: 2.5rem 0;">
+          <div class="container-main flex-between text-xs" style="color: rgba(248,246,241,0.75);">
+            <div>
+              <p class="font-serif text-base font-bold" style="color:#fff;">«Дисиденти: голос свободи в епоху цифрових технологій»</p>
+              <p class="mt-2">Інтегрований дослідницько-творчий проєкт з історії України та інформатики • 11 клас</p>
+            </div>
+            <div class="font-mono">
+              <p style="color:#fff;">Автор: Даніїл Маслов (11 клас)</p>
+              <p class="mt-2">2026 • Освітній цифровий продукт</p>
+            </div>
+          </div>
+        </footer>
+
+        <!-- Модальне вікно джерела -->
+        <div id="sourceModal" class="modal-backdrop">
+          <div class="modal-box">
+            <div class="flex-between p-5" style="background:var(--paper-dark); border-bottom:1px solid var(--border-warm);">
+              <div>
+                <span id="modalSourceType" class="section-kicker" style="margin-bottom:2px;">Архівне джерело</span>
+                <h3 id="modalSourceTitle" class="font-serif text-xl font-bold"></h3>
+              </div>
+              <button onclick="closeSourceModal()" class="btn-secondary" style="padding:0.35rem 0.65rem;">✕</button>
+            </div>
+            <div id="modalSourceBody" class="p-6 text-sm" style="overflow-y:auto; display:flex; flex-direction:column; gap:1rem;"></div>
+            <div class="p-4" style="background:var(--paper); border-top:1px solid var(--border-warm); display:flex; justify-content:flex-end;">
+              <button onclick="closeSourceModal()" class="btn-primary">Закрити картку джерела</button>
+            </div>
+          </div>
+        </div>
+      `;
     })();
 
-    // ================= 1. ДАНІ ПОРІВНЯННЯ ЕПОХ =================
+    // ================= 2. ДАНІ ПОРІВНЯННЯ ЕПОХ =================
     const eraComparisonData = {
       '1965': [
         {
@@ -660,76 +923,81 @@
       const container = document.getElementById('eraContent');
 
       if (era === '1965') {
-        btn1965.className = 'px-3 py-1.5 rounded-md bg-crimson text-white transition-all';
-        btn2026.className = 'px-3 py-1.5 rounded-md text-inkMuted hover:text-ink transition-all';
+        btn1965.style.background = 'var(--crimson)';
+        btn1965.style.color = '#fff';
+        btn2026.style.background = 'transparent';
+        btn2026.style.color = 'var(--ink-muted)';
       } else {
-        btn2026.className = 'px-3 py-1.5 rounded-md bg-navy text-white transition-all';
-        btn1965.className = 'px-3 py-1.5 rounded-md text-inkMuted hover:text-ink transition-all';
+        btn2026.style.background = 'var(--navy)';
+        btn2026.style.color = '#fff';
+        btn1965.style.background = 'transparent';
+        btn1965.style.color = 'var(--ink-muted)';
       }
 
+      const colorVar = era === '1965' ? 'var(--crimson)' : 'var(--navy)';
       container.innerHTML = eraComparisonData[era].map(item => `
-        <div class="p-3.5 rounded-xl bg-paper border border-borderWarm">
-          <div class="text-[11px] font-mono uppercase tracking-wider ${era === '1965' ? 'text-crimson' : 'text-navy'} font-semibold mb-1">${item.label}</div>
-          <p class="text-xs sm:text-sm text-ink leading-relaxed">${item.value}</p>
+        <div style="padding:0.85rem; border-radius:10px; background:var(--paper); border:1px solid var(--border-warm);">
+          <div class="font-mono text-xs font-semibold mb-1" style="color:${colorVar}; text-transform:uppercase;">${item.label}</div>
+          <p class="text-sm">${item.value}</p>
         </div>
       `).join('');
     }
 
-    // ================= 2. ДАНІ ХРОНОЛОГІЇ =================
+    // ================= 3. ДАНІ ХРОНОЛОГІЇ =================
     const timelineEvents = [
       {
         year: '1953–1956',
         title: 'Початок «хрущовської відлиги» та ХХ з’їзд КПРС',
         category: 'Історичний контекст',
-        desc: 'Після смерті Й. Сталіна (березень 1953) розпочалася лібералізація режиму. У лютому 1956 р. на ХХ з’їзді КПРС М. Хрущов виступив із закритою доповіддю «Про культ особи та його наслідки». Розпочалася реабілітація політв’язнів, проте реабілітація не стосувалася діячів ОУН і УПА та українських буржуазних націоналістів.'
+        desc: 'Після смерті Й. Сталіна (березень 1953) розпочалася лібералізація режиму. У лютому 1956 р. на ХХ з’їзді КПРС М. Хрущов виступив із закритою доповіддю «Про культ особи та його наслідки». Розпочалася реабілітація політв’язнів, проте вона не стосувалася діячів ОУН і УПА.'
       },
       {
         year: '1959–1961',
         title: 'Українська робітничо-селянська спілка (УРСС) та «Справа юристів»',
         category: 'Перші дисидентські організації',
-        desc: 'Юрист Левко Лук’яненко та Іван Кандиба створили на Львівщині підпільну УРСС, яка виступала за конституційний вихід УРСР зі складу СРСР (згідно зі ст. 14 Конституції УРСР). У травні 1961 р. закритий суд у Львові засудив Л. Лук’яненка до розстрілу, який згодом замінили на 15 років таборів суворого режиму.'
+        desc: 'Юрист Левко Лук’яненко та Іван Кандиба створили на Львівщині підпільну УРСС, яка виступала за конституційний вихід УРСР зі складу СРСР (ст. 14 Конституції УРСР). У травні 1961 р. закритий суд у Львові засудив Л. Лук’яненка до розстрілу, який згодом замінили на 15 років таборів.'
       },
       {
         year: '1960–1964',
         title: 'Клуб творчої молоді «Сучасник» та відкриття Биківнянських могил',
         category: 'Рух шістдесятників',
-        desc: 'У Києві під керівництвом Леся Танюка діяв Клуб творчої молоді (І. Світличний, В. Симоненко, А. Горська, І. Дзюба, Є. Сверстюк), а у Львові — клуб «Пролісок» (М. Горинь). У 1962 р. комісія КТМ виявила у Биківнянському лісі під Києвом місця масових розстрілів НКВС 1937–1941 рр., після чого влада посилила тиск на клуб.'
+        desc: 'У Києві під керівництвом Леся Танюка діяв Клуб творчої молоді (І. Світличний, В. Симоненко, А. Горська, І. Дзюба, Є. Сверстюк), а у Львові — клуб «Пролісок» (М. Горинь). У 1962 р. комісія КТМ виявила у Биківнянському лісі під Києвом місця масових розстрілів НКВС 1937–1941 рр.'
       },
       {
         year: 'Березень 1964',
         title: 'Знищення вітража «Шевченко. Мати» у Київському університеті',
         category: 'Партійна цензура',
-        desc: 'До 150-річчя Тараса Шевченка художники Алла Горська, Опанас Заливаха, Людмила Семикіна, Галина Севрук та Галина Зубченко створили у вестибюлі Червоного корпусу КНУ величний вітраж. Партійне керівництво визнало образ Кобзаря «ідейно ворожим» і наказало розбити твір молотками ще до офіційного відкриття.'
+        desc: 'До 150-річчя Тараса Шевченка художники Алла Горська, Опанас Заливаха, Людмила Семикіна, Галина Севрук та Галина Зубченко створили у вестибюлі Червоного корпусу КНУ величний вітраж. Партійне керівництво визнало образ Кобзаря «ідейно ворожим» і наказало розбити твір молотками.'
       },
       {
         year: 'Серпень–Вересень 1965',
         title: 'Перша хвиля масових арештів і протест у кінотеатрі «Україна»',
         category: 'Відкритий опір',
-        desc: 'Наприкінці серпня 1965 р. КДБ провів першу хвилю арештів української інтелігенції (заарештовано близько 20 осіб, зокрема братів Горинів, О. Заливаху, С. Караванського). 4 вересня 1965 р. під час прем’єри фільму С. Параджанова «Тіні забутих предків» у кінотеатрі «Україна» Іван Дзюба, В’ячеслав Чорновіл та Василь Стус закликали громадян піднятися на знак протесту проти політичних репресій.'
+        desc: 'Наприкінці серпня 1965 р. КДБ провів першу хвилю арештів української інтелігенції (заарештовано близько 20 осіб). 4 вересня 1965 р. під час прем’єри фільму С. Параджанова «Тіні забутих предків» у кінотеатрі «Україна» Іван Дзюба, В’ячеслав Чорновіл та Василь Стус закликали громадян піднятися на знак протесту.'
       },
       {
         year: '1967',
         title: 'Вихід збірки В’ячеслава Чорновола «Лихо з розуму»',
         category: 'Самвидав і Тамвидав',
-        desc: 'В’ячеслав Чорновіл зібрав біографії, листи й табірні свідчення 20 заарештованих у 1965 р. шістдесятників у документальну працю «Лихо з розуму (Портрети двадцяти "злочинців")». Рукопис нелегально передали за кордон і видали у Парижі в 1967 р., що викликало потужний міжнародний резонанс.'
+        desc: 'В’ячеслав Чорновіл зібрав біографії, листи й табірні свідчення 20 заарештованих у 1965 р. шістдесятників у документальну працю «Лихо з розуму (Портрети двадцяти "злочинців")». Рукопис передали за кордон і видали у Парижі в 1967 р.'
       },
       {
         year: 'Січень 1970',
         title: 'Початок виходу підпільного часопису «Український вісник»',
         category: 'Інформаційний спротив',
-        desc: 'За редакцією В’ячеслава Чорновола почав виходити позацензурний суспільно-політичний журнал «Український вісник» (усього вийшло 6 випусків у 1970–1972 рр.). Часопис систематично публікував хроніку політичних репресій, обшуків, судових процесів та літературні твори, заборонені цензурою.'
+        desc: 'За редакцією В’ячеслава Чорновола почав виходити позацензурний суспільно-політичний журнал «Український вісник» (6 випусків у 1970–1972 рр.), який публікував хроніку політичних репресій, обшуків, судових процесів і заборонені твори.'
       },
       {
         year: 'Січень 1972',
         title: 'Операція КДБ «Блок» («Заарештована коляда»)',
         category: 'Репресії',
-        desc: 'У січні 1972 р. КДБ УРСР розпочав масштабну спецоперацію «Блок», заарештувавши понад 100 провідних діячів українського дисидентського руху (В. Стуса, В. Чорновола, І. Світличного, Є. Сверстюка, І. Калинця, В. Марченка, Л. Плюща). Більшість отримала максимальні терміни за ст. 62 КК УРСР.'
+        desc: 'У січні 1972 р. КДБ УРСР розпочав масштабну спецоперацію «Блок», заарештувавши понад 100 провідних діячів українського дисидентського руху (В. Стуса, В. Чорновола, І. Світличного, Є. Сверстюка, І. Калинця, В. Марченка).'
       },
       {
         year: '9 листопада 1976',
         title: 'Створення Української Гельсінської групи (УГГ)',
         category: 'Правозахисний етап',
-        desc: 'Спираючись на гуманітарні статті Гельсінського Заключного акта (1975), Микола Руденко, Оксана Мешко, Левко Лук’яненко, Петро Григоренко та їхні однодумці заснували Українську громадську групу сприяння виконанню Гельсінських угод. Дисидентський рух перейшов у відкриту міжнародно-правову площину.'
+        desc: 'Спираючись на гуманітарні статті Гельсінського Заключного акта (1975), Микола Руденко, Оксана Мешко, Левко Лук’яненко, Петро Григоренко та їхні однодумці заснували Українську громадську групу сприяння виконанню Гельсінських угод.'
       }
     ];
 
@@ -737,28 +1005,27 @@
       const btnContainer = document.getElementById('timelineButtons');
       const detailContainer = document.getElementById('timelineDetail');
 
-      btnContainer.innerHTML = timelineEvents.map((ev, idx) => `
-        <button onclick="renderTimeline(${idx})" class="px-3.5 py-2 rounded-lg text-xs font-mono font-medium transition-all border ${
-          idx === activeIndex
-            ? 'bg-crimson text-white border-crimson shadow-sm'
-            : 'bg-paper text-ink hover:bg-paperDark border-borderWarm'
-        }">
-          ${ev.year}
-        </button>
-      `).join('');
+      btnContainer.innerHTML = timelineEvents.map((ev, idx) => {
+        const isActive = idx === activeIndex;
+        return `
+          <button onclick="renderTimeline(${idx})" class="font-mono text-xs font-semibold" style="padding:0.5rem 0.9rem; border-radius:8px; border:1px solid ${isActive ? 'var(--crimson)' : 'var(--border-warm)'}; background:${isActive ? 'var(--crimson)' : 'var(--paper)'}; color:${isActive ? '#fff' : 'var(--ink)'};">
+            ${ev.year}
+          </button>
+        `;
+      }).join('');
 
       const item = timelineEvents[activeIndex];
       detailContainer.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
-          <span class="text-xs font-mono font-bold text-crimson uppercase tracking-wider">${item.year} • ${item.category}</span>
-          <span class="text-xs font-mono text-inkMuted">Подія ${activeIndex + 1} з ${timelineEvents.length}</span>
+        <div class="flex-between mb-2">
+          <span class="font-mono text-xs font-bold text-crimson" style="text-transform:uppercase;">${item.year} • ${item.category}</span>
+          <span class="font-mono text-xs text-muted">Подія ${activeIndex + 1} з ${timelineEvents.length}</span>
         </div>
-        <h4 class="font-serif text-xl font-bold text-ink mb-2">${item.title}</h4>
-        <p class="text-sm text-inkMuted leading-relaxed">${item.desc}</p>
+        <h4 class="font-serif text-xl font-bold mb-2">${item.title}</h4>
+        <p class="text-sm text-muted">${item.desc}</p>
       `;
     }
 
-    // ================= 3. ДАНІ ДИСИДЕНТІВ (4 ПЕРСОНАЛІЇ) =================
+    // ================= 4. ДАНІ ДИСИДЕНТІВ (4 ПЕРСОНАЛІЇ) =================
     const dissidentsData = [
       {
         id: 'chornovil',
@@ -768,10 +1035,10 @@
         photo: 'img/chornovil.jpg',
         quote: '«Якби мені довелося починати все спочатку та вибирати між таборами і мовчанням — я знову обрав би табори».',
         tabs: {
-          bio: 'Народився 24 грудня 1937 р. в с. Єрки на Черкащині в родині вчителів. Із відзнакою закінчив факультет журналістики Київського державного університету (1960). Працював на Львівському та Київському телебаченні, у газеті «Молода гвардія». За правозахисну позицію був звільнений із роботи, тричі заарештований радянським режимом (1967, 1972, 1980) та провів загалом 15 років у радянських таборах суворого режиму Мордовії та на засланні в Якутії.',
+          bio: 'Народився 24 грудня 1937 р. в с. Єрки на Черкащині в родині вчителів. Із відзнакою закінчив факультет журналістики Київського державного університету (1960). За правозахисну позицію був звільнений із роботи, тричі заарештований радянським режимом (1967, 1972, 1980) та провів загалом 15 років у радянських таборах суворого режиму Мордовії та на засланні в Якутії.',
           ideas: 'Відстоював ідею державної незалежності України демократичним, ненасильницьким шляхом; верховенство права і дотримання конституційних гарантій під час судових процесів; ліквідацію цензури та свободу преси; об’єднання всіх регіонів України навколо єдиної громадянської та національної ідеї.',
-          activity: '4 вересня 1965 р. виступив із протестом у кінотеатрі «Україна». Відмовився давати свідчення на закритих судах над шістдесятниками та уклав документальні книги «Правосуддя чи рецидиви терору?» (1966) і «Лихо з розуму» (1967). У 1970–1972 рр. організував підпільне видання й розповсюдження позацензурного журналу «Український вісник». У таборах очолював страйки за статус політв’язня, а в 1979 р. вступив до Української Гельсінської групи.',
-          impact: 'Став головним організатором національно-демократичного відродження кінця 1980-х років: засновник Української Гельсінської спілки (1988), співзасновник і лідер Народного Руху України, голова Львівської обласної ради (1990), народний депутат України та один із безпосередніх ініціаторів проголошення Акта незалежності України 24 серпня 1991 р.'
+          activity: '4 вересня 1965 р. виступив із протестом у кінотеатрі «Україна». Відмовився давати свідчення на закритих судах над шістдесятниками та уклав документальні книги «Правосуддя чи рецидиви терору?» (1966) і «Лихо з розуму» (1967). У 1970–1972 рр. організував підпільне видання й розповсюдження позацензурного журналу «Український вісник».',
+          impact: 'Став головним організатором національно-демократичного відродження кінця 1980-х років: засновник Української Гельсінської спілки (1988), співзасновник і лідер Народного Руху України, народний депутат України та один із безпосередніх ініціаторів проголошення Акта незалежності України 24 серпня 1991 р.'
         }
       },
       {
@@ -782,10 +1049,10 @@
         photo: 'img/stus.jpg',
         quote: '«Народе мій, до тебе я ще верну, у смерті обернувшись до життя своїм стражданням і незлим обличчям...»',
         tabs: {
-          bio: 'Народився 6 січня 1938 р. у с. Рахнівка на Вінниччині, дитинство та юність провів у Донецьку (тоді Сталіно). Закінчив історико-філологічний факультет Сталінського педінституту, вступив до аспірантури Інституту літератури АН УРСР у Києві (1963). Через публічні протести проти арештів 1965 р. був відрахований з аспірантури. Двічі засуджений за ст. 62 КК УРСР (у 1972 та 1980 рр.). Загинув у ніч на 4 вересня 1985 р. у карцері табору особливого режиму ВС-389/36-1 у с. Кучино (Пермська обл.).',
+          bio: 'Народився 6 січня 1938 р. у с. Рахнівка на Вінниччині, дитинство та юність провів у Донецьку. Навчався в аспірантурі Інституту літератури АН УРСР у Києві (1963). Через публічні протести проти арештів 1965 р. був відрахований з аспірантури. Двічі засуджений за ст. 62 КК УРСР (у 1972 та 1980 рр.). Загинув у ніч на 4 вересня 1985 р. у карцері табору особливого режиму ВС-389/36-1 у с. Кучино.',
           ideas: 'Сповідував філософію «екзистенційного вибору» та безкомпромісної моральної гідності людини перед обличчям тоталітарної машини. Наголошував, що митець не має права на конформізм, коли нищать його народ і мову; розглядав українську культуру як невід’ємну частину високого європейського модернізму.',
-          activity: 'Під час прем’єри у кінотеатрі «Україна» (1965) закликав протестувати проти арештів інтелігенції. Відкрито писав листи на захист В. Чорновола, І. Світличного та А. Горської. Оскільки радянські видавництва заблокували друк його книг, поширював поезію у самвидаві та видав за кордоном збірки «Зимові дерева» (1970) і «Свіча в свічаді» (1977). У жовтні 1979 р. після першого ув’язнення відкрито вступив до Української Гельсінської групи.',
-          impact: 'Попри конфіскації КДБ (знищено рукопис книги «Птах душі» з близько 300 віршами), його табірна збірка «Палімпсести», переправлена на волю на мікроплівках, стала вершиною української поезії ХХ століття. У 1989 р. прах поета було перепоховано у Києві на Байковому кладовищі під час багатотисячної маніфестації, що прискорила падіння комуністичного режиму.'
+          activity: 'Під час прем’єри у кінотеатрі «Україна» (1965) закликав протестувати проти арештів інтелігенції. Поширював поезію у самвидаві та видав за кордоном збірки «Зимові дерева» (1970) і «Свіча в свічаді» (1977). У жовтні 1979 р. після першого ув’язнення відкрито вступив до Української Гельсінської групи.',
+          impact: 'Попри конфіскації КДБ, його табірна збірка «Палімпсести», переправлена на волю на мікроплівках, стала вершиною української поезії ХХ століття. У 1989 р. прах поета було перепоховано у Києві на Байковому кладовищі під час багатотисячної маніфестації.'
         }
       },
       {
@@ -796,10 +1063,10 @@
         photo: 'img/dziuba.jpg',
         quote: '«Політика русифікації руйнує духовну основу народу під маскою фальшивого інтернаціоналізму».',
         tabs: {
-          bio: 'Народився 26 липня 1931 р. у с. Миколаївка на Донеччині в селянській родині, яка пережила Голодомор. Закінчив Донецький педагогічний інститут та аспірантуру Інституту літератури ім. Т. Г. Шевченка у Києві. Працював редактором у видавництві «Дніпро» та завідувачем відділу критики журналу «Вітчизна». У 1972 р. заарештований і у 1973 р. засуджений до 5 років ув’язнення та 5 років заслання за працю «Інтернаціоналізм чи русифікація?».',
-          ideas: 'Довів із позицій соціології, демографії та права, що радянська національна політика в Україні є прямим продовженням імперського шовінізму та примусової асиміляції. Відстоював право українців на повноцінне функціонування рідної мови в науці, вищій освіті та державному управлінні, а також міжнаціональну солідарність українців та євреїв у боротьбі з тоталітаризмом.',
-          activity: '4 вересня 1965 р. виголосив історичний виступ у кінотеатрі «Україна», повідомивши глядачам про таємні арешти інтелігенції. У грудні 1965 р. написав фундаментальний трактат «Інтернаціоналізм чи русифікація?» і офіційно надіслав його першому секретарю ЦК КПУ П. Шелесту. 29 вересня 1966 р. виступив на стихійному мітингу в Бабиному Яру, засудивши державний антисемітизм і замовчування трагедії.',
-          impact: 'Праця «Інтернаціоналізм чи русифікація?» стала головним теоретичним маніфестом усього українського дисидентського руху, була видана у самвидаві та перекладена англійською, французькою, італійською й китайською мовами. У незалежній Україні Іван Дзюба став другим Міністром культури України (1992–1994) та співголовою Головної редколегії «Енциклопедії сучасної України».'
+          bio: 'Народився 26 липня 1931 р. у с. Миколаївка на Донеччині. Закінчив Донецький педагогічний інститут та аспірантуру Інституту літератури ім. Т. Г. Шевченка у Києві. У 1972 р. заарештований і у 1973 р. засуджений до 5 років ув’язнення та 5 років заслання за працю «Інтернаціоналізм чи русифікація?».',
+          ideas: 'Довів із позицій соціології, демографії та права, що радянська національна політика в Україні є прямим продовженням імперського шовінізму та примусової асиміляції. Відстоював право українців на повноцінне функціонування рідної мови в науці, вищій освіті та державному управлінні.',
+          activity: '4 вересня 1965 р. виголосив історичний виступ у кінотеатрі «Україна». У грудні 1965 р. написав фундаментальний трактат «Інтернаціоналізм чи русифікація?» і офіційно надіслав його керівництву ЦК КПУ. 29 вересня 1966 р. виступив на мітингу в Бабиному Яру проти державного антисемітизму.',
+          impact: 'Праця «Інтернаціоналізм чи русифікація?» стала головним теоретичним маніфестом усього українського дисидентського руху. У незалежній Україні Іван Дзюба став другим Міністром культури України (1992–1994) та співголовою Головної редколегії «Енциклопедії сучасної України».'
         }
       },
       {
@@ -810,10 +1077,10 @@
         photo: 'img/horska.jpg',
         quote: '«Ми — крапля в морі, але з крапель складається океан народної пам’яті».',
         tabs: {
-          bio: 'Народилася 18 вересня 1929 р. в Ялті. Пережила дві зими блокади Ленінграда, з 1943 р. жила в Києві. Закінчила живописний факультет Київського художнього інституту (1954). У 30-річному віці свідомо вивчила українську мову і стала одним із головних організаторів Клубу творчої молоді «Сучасник». Трагічно загинула 28 листопада 1970 р. у м. Васильків за обставин, пов’язаних зі спецоперацією КДБ.',
-          ideas: 'Синтезувала традиції українського народного мистецтва та спадщину «Розстріляного відродження» (школи М. Бойчука) із сучасним монументалізмом поза межами соцреалізму. Відстоювала відновлення правди про сталінський терор та моральний обов’язок митця підтримувати репресованих побратимів і їхні родини.',
-          activity: 'Разом із В. Симоненком та Л. Танюком у 1962 р. розшукала та задокументувала таємні поховання жертв НКВС у Биківні. У 1964 р. у співавторстві створила опальний вітраж «Шевченко. Мати» у КНУ, за який була виключена зі Спілки художників. Створювала монументальні мозаїки в Донецьку («Жінка-птаха», «Дерево життя») та Маріуполі («Боривітер»). Підписала «Лист-протест 139-ти» (1968) та відкрито їздила на суди і до мордовських таборів підтримувати політв’язнів.',
-          impact: 'Стала символом незламності українського мистецького авангарду 1960-х років. Похорон Алли Горської 7 грудня 1970 р. на Берковецькому цвинтарі в Києві перетворився на відкритий протестний мітинг за участю В. Стуса, Є. Сверстюка та І. Геля, що продемонстрував солідарність українського дисидентського руху.'
+          bio: 'Народилася 18 вересня 1929 р. в Ялті. Закінчила живописний факультет Київського художнього інституту (1954). У 30-річному віці свідомо вивчила українську мову і стала одним із головних організаторів Клубу творчої молоді «Сучасник». Трагічно загинула 28 листопада 1970 р. у м. Васильків за обставин, пов’язаних зі спецоперацією КДБ.',
+          ideas: 'Синтезувала традиції українського народного мистецтва та спадщину «Розстріляного відродження» (школи М. Бойчука) із сучасним монументалізмом поза межами соцреалізму. Відстоювала відновлення правди про сталінський терор та моральний обов’язок митця підтримувати репресованих побратимів.',
+          activity: 'Разом із В. Симоненком та Л. Танюком у 1962 р. розшукала та задокументувала таємні поховання жертв НКВС у Биківні. У 1964 р. у співавторстві створила опальний вітраж «Шевченко. Мати» у КНУ. Створювала монументальні мозаїки в Донецьку та Маріуполі («Боривітер»), підписала «Лист-протест 139-ти» (1968).',
+          impact: 'Стала символом незламності українського мистецького авангарду 1960-х років. Похорон Алли Горської 7 грудня 1970 р. на Берковецькому цвинтарі в Києві перетворився на відкритий протестний мітинг за участю В. Стуса, Є. Сверстюка та І. Геля.'
         }
       }
     ];
@@ -827,7 +1094,7 @@
 
     function createFallbackPortrait(name, years) {
       const initials = name.split(' ').map(w => w[0]).join('');
-      const svg = `<svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="400" height="500" viewBox="0 0 400 500">
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="500" viewBox="0 0 400 500">
         <rect width="400" height="500" fill="#EFECE4"/>
         <rect x="20" y="20" width="360" height="460" fill="none" stroke="#C7C0B3" stroke-width="2"/>
         <circle cx="200" cy="195" r="72" fill="#D8D2C5"/>
@@ -839,7 +1106,7 @@
     }
 
     function createFallbackDocumentImg(code, date) {
-      const svg = `<svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="600" height="340" viewBox="0 0 600 340">
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="340" viewBox="0 0 600 340">
         <rect width="600" height="340" fill="#EFECE4"/>
         <rect x="18" y="18" width="564" height="304" fill="#F8F6F1" stroke="#D1C9B8" stroke-width="2"/>
         <line x1="50" y1="95" x2="550" y2="95" stroke="#E5E0D5" stroke-width="2"/>
@@ -868,50 +1135,47 @@
         const fallbackUrl = createFallbackPortrait(person.name, person.years);
 
         return `
-          <article class="editorial-card rounded-2xl overflow-hidden flex flex-col">
-            <div class="grid sm:grid-cols-12 border-b border-borderWarm bg-paper/60">
-              <div class="sm:col-span-4 relative bg-paperDark aspect-[4/5] sm:aspect-auto">
+          <article class="editorial-card" style="overflow:hidden; display:flex; flex-direction:column;">
+            <div class="dissident-header">
+              <div class="dissident-photo-wrap">
                 <img
                   src="${person.photo}"
                   alt="${person.name}"
                   onerror="this.onerror=null;this.src='${fallbackUrl}';"
-                  class="w-full h-full object-cover object-top grayscale contrast-110"
                 />
-                <span class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-ink/80 text-white font-mono text-[11px]">
+                <span class="font-mono text-xs" style="position:absolute; bottom:8px; left:8px; background:rgba(28,27,24,0.85); color:#fff; padding:2px 8px; border-radius:5px;">
                   ${person.years}
                 </span>
               </div>
-              <div class="sm:col-span-8 p-5 sm:p-6 flex flex-col justify-between">
+              <div class="p-5" style="display:flex; flex-direction:column; justify-content:space-between;">
                 <div>
-                  <span class="text-xs font-mono uppercase tracking-wider text-crimson font-semibold block mb-1">${person.role}</span>
-                  <h3 class="font-serif text-2xl font-bold text-ink mb-3">${person.name}</h3>
-                  <blockquote class="text-xs sm:text-sm italic text-inkMuted border-l-2 border-crimson pl-3 py-0.5">
+                  <span class="section-kicker" style="margin-bottom:4px;">${person.role}</span>
+                  <h3 class="font-serif text-2xl font-bold mb-2">${person.name}</h3>
+                  <blockquote class="text-xs italic text-muted" style="border-left:2px solid var(--crimson); padding-left:0.75rem;">
                     ${person.quote}
                   </blockquote>
                 </div>
-                <div class="flex flex-wrap gap-1.5 mt-4 pt-3 border-t border-borderWarm">
-                  ${Object.keys(tabNames).map(key => `
-                    <button
-                      onclick="switchDissidentTab('${person.id}', '${key}')"
-                      class="px-2.5 py-1.5 rounded-md text-xs font-medium transition-colors ${
-                        currentTab === key
-                          ? 'bg-ink text-white'
-                          : 'bg-white text-inkMuted hover:text-ink border border-borderWarm'
-                      }">
-                      ${tabNames[key]}
-                    </button>
-                  `).join('')}
+                <div class="flex-wrap-gap mt-4" style="padding-top:0.75rem; border-top:1px solid var(--border-warm);">
+                  ${Object.keys(tabNames).map(key => {
+                    const active = currentTab === key;
+                    return `
+                      <button
+                        onclick="switchDissidentTab('${person.id}', '${key}')"
+                        class="text-xs font-semibold"
+                        style="padding:6px 10px; border-radius:6px; border:1px solid ${active ? 'var(--ink)' : 'var(--border-warm)'}; background:${active ? 'var(--ink)' : '#fff'}; color:${active ? '#fff' : 'var(--ink-muted)'};">
+                        ${tabNames[key]}
+                      </button>
+                    `;
+                  }).join('')}
                 </div>
               </div>
             </div>
 
-            <div class="p-5 sm:p-6 flex-1 bg-white">
-              <div class="text-xs font-mono uppercase tracking-wider text-inkMuted mb-1.5">
+            <div class="p-5" style="flex:1; background:#fff;">
+              <div class="font-mono text-xs text-muted mb-2" style="text-transform:uppercase;">
                 Розділ досьє: <strong class="text-crimson">${tabNames[currentTab]}</strong>
               </div>
-              <p class="text-sm text-ink leading-relaxed">
-                ${person.tabs[currentTab]}
-              </p>
+              <p class="text-sm">${person.tabs[currentTab]}</p>
             </div>
           </article>
         `;
@@ -923,7 +1187,7 @@
       renderDissidents();
     }
 
-    // ================= 4. ДАНІ 6 ІСТОРИЧНИХ ДЖЕРЕЛ (САМВИДАВ І ЦЕНЗУРА) =================
+    // ================= 5. ДАНІ 6 ІСТОРИЧНИХ ДЖЕРЕЛ =================
     const historicalSources = [
       {
         id: 'src1',
@@ -934,7 +1198,7 @@
         type: 'Публіцистичний трактат самвидаву',
         image: 'img/source-internac.jpg',
         excerpt: '«На ділі ж під виглядом братерства народів у республіці проводиться політика <span class="redacted-text">цілеспрямованої русифікації українських міст та вищої школи</span>, а кожен, хто стає на захист рідної мови, негайно таврується органами як <span class="redacted-text">буржуазний націоналіст</span>».',
-        spreadMethod: 'Написаний після арештів літа 1965 р. і офіційно надісланий Першому секретареві ЦК КПУ П. Шелесту та голові РМ УРСР В. Щербицькому. Копії на цигарковому папері масово передруковувалися студентами й інтелігенцією, а мікрофільм передали на Захід.',
+        spreadMethod: 'Написаний після арештів літа 1965 р. і офіційно надісланий Першому секретареві ЦК КПУ П. Шелесту. Копії на цигарковому папері масово передруковувалися студентами й інтелігенцією, а мікрофільм передали на Захід.',
         regimeReaction: 'Спеціальна комісія ЦК КПУ на чолі з главою КДБ В. Нікітченком оголосила працю «антирадянським пасквілем». Автора виключили зі Спілки письменників України і засудили до 5 років таборів.'
       },
       {
@@ -947,7 +1211,7 @@
         image: 'img/source-lykho.jpg',
         excerpt: '«Закриті суди 1966 року в Києві, Львові та Івано-Франківську засвідчили, що слідчі органи КДБ систематично <span class="redacted-text">грубо порушували процесуальні норми та конституційні гарантії</span>, засуджуючи людей виключно за читання та зберігання літератури».',
         spreadMethod: 'Укладена В. Чорноволом із переданих із таборів листів, касаційних скарг, віршів і мистецьких репродукцій 20 політв’язнів першої хвилі арештів. Поширювалася у машинописних списках та радіопередачах Радіо «Свобода».',
-        regimeReaction: 'КДБ порушив кримінальну справу проти В. Чорновола; у листопаді 1967 р. Львівський обласний суд засудив його до 3 років позбавлення волі у таборах суворого режиму (за книгу в 1968 р. Чорновіл отримав британську премію ім. М. Томліна).'
+        regimeReaction: 'КДБ порушив кримінальну справу проти В. Чорновола; у листопаді 1967 р. Львівський обласний суд засудив його до 3 років позбавлення волі у таборах суворого режиму.'
       },
       {
         id: 'src3',
@@ -958,8 +1222,8 @@
         type: 'Періодичне видання самвидаву',
         image: 'img/source-visnyk.jpg',
         excerpt: '«"Український вісник" не є антирадянським чи підпільним виданням за своєю суттю: він користується <span class="redacted-text">конституційним правом громадян на свободу слова та інформації</span> і фіксує факти порушення законності та репресій в Україні».',
-        spreadMethod: 'Готувався конспіративною мережею під керівництвом В. Чорновола у Львові та Києві. Кожен випуск друкувався в декількох закладках і кур’єрами передавався по обласних центрах і до Москви (для «Хроніки поточних подій»).',
-        regimeReaction: 'Розшук редакції «Українського вісника» став головною метою всесоюзної операції КДБ «Блок» (1971–1972), що завершилася арештом понад 100 дисидентів.'
+        spreadMethod: 'Готувався конспіративною мережею під керівництвом В. Чорновола у Львові та Києві. Кожен випуск друкувався в декількох закладках і кур’єрами передавався по обласних центрах.',
+        regimeReaction: 'Розшук редакції «Українського вісник» став головною метою всесоюзної операції КДБ «Блок» (1971–1972), що завершилася арештом понад 100 дисидентів.'
       },
       {
         id: 'src4',
@@ -982,7 +1246,7 @@
         type: 'Офіційний таємний документ радянських спецслужб',
         image: 'img/source-kgb.jpg',
         excerpt: '«Цілком таємно. Під час проведення обшуків у фігурантів справи "Блок" вилучено <span class="redacted-text">понад 1500 примірників документів самвидаву, друкарські машинки та фотоплівки</span>, підготовлені для передачі за кордон іноземним емісарам».',
-        spreadMethod: 'Внутрішній звіт Голови КДБ при РМ УРСР В. Федорчука Першому секретареві ЦК КПУ. Сьогодні оцифрований і відкритий для громадян відповідно до Закону України «Про доступ до архівів репресивних органів комуністичного тоталітарного режиму».',
+        spreadMethod: 'Внутрішній звіт Голови КДБ при РМ УРСР В. Федорчука Першому секретареві ЦК КПУ. Сьогодні оцифрований і відкритий для громадян у Галузевому державному архіві СБУ.',
         regimeReaction: 'Документ засвідчує масштаби державного стеження, перлюстрації листування та репресій проти української інтелігенції на початку 1972 року.'
       },
       {
@@ -1006,45 +1270,44 @@
       grid.innerHTML = historicalSources.map((src, idx) => {
         const fallbackImg = createFallbackDocumentImg(src.code, src.date.split('(')[0].trim());
         return `
-        <article class="editorial-card rounded-xl overflow-hidden flex flex-col justify-between">
+        <article class="editorial-card" style="overflow:hidden; display:flex; flex-direction:column; justify-content:space-between;">
           <div>
-            <div class="relative h-44 bg-paperDark border-b border-borderWarm overflow-hidden">
+            <div style="position:relative; height:180px; background:var(--paper-dark); border-bottom:1px solid var(--border-warm); overflow:hidden;">
               <img
                 src="${src.image}"
                 alt="${src.title}"
                 onerror="this.onerror=null;this.src='${fallbackImg}';"
-                class="w-full h-full object-cover grayscale contrast-110"
+                style="width:100%; height:100%; object-fit:cover; filter:grayscale(100%) contrast(1.08);"
               />
-              <div class="absolute top-3 left-3 right-3 flex items-center justify-between gap-2">
-                <span class="text-[11px] font-mono font-bold text-white bg-crimson px-2.5 py-0.5 rounded shadow-sm">${src.code}</span>
-                <span class="text-[11px] font-mono text-white bg-ink/80 px-2.5 py-0.5 rounded">${src.date.split('(')[0].trim()}</span>
+              <div style="position:absolute; top:10px; left:10px; right:10px; display:flex; justify-content:space-between; gap:8px;">
+                <span class="font-mono text-xs font-bold" style="background:var(--crimson); color:#fff; padding:2px 8px; border-radius:4px;">${src.code}</span>
+                <span class="font-mono text-xs" style="background:rgba(28,27,24,0.82); color:#fff; padding:2px 8px; border-radius:4px;">${src.date.split('(')[0].trim()}</span>
               </div>
             </div>
 
-            <div class="p-6">
-              <h3 class="font-serif font-bold text-lg text-ink mb-2 leading-snug">${src.title}</h3>
+            <div class="p-5">
+              <h3 class="font-serif font-bold text-lg mb-2">${src.title}</h3>
 
-              <div class="text-xs text-inkMuted mb-3 pb-3 border-b border-borderWarm space-y-1">
-                <div><strong class="text-ink">Походження:</strong> ${src.origin}</div>
-                <div><strong class="text-ink">Дата:</strong> ${src.date}</div>
+              <div class="text-xs text-muted mb-3" style="padding-bottom:0.75rem; border-bottom:1px solid var(--border-warm);">
+                <div class="mb-1"><strong style="color:var(--ink);">Походження:</strong> ${src.origin}</div>
+                <div><strong style="color:var(--ink);">Дата:</strong> ${src.date}</div>
               </div>
 
-              <div class="bg-paper rounded-lg p-3.5 border border-borderWarm mb-4">
-                <div class="text-[10px] font-mono uppercase tracking-wider text-inkMuted mb-1">Фрагмент документа (натисніть на темну смугу):</div>
-                <p class="text-xs text-ink italic leading-relaxed" onclick="toggleSingleRedaction(event)">
+              <div class="p-4 mb-3" style="background:var(--paper); border-radius:10px; border:1px solid var(--border-warm);">
+                <div class="font-mono text-xs text-muted mb-1" style="font-size:10px; text-transform:uppercase;">Фрагмент документа (натисніть на темну смугу):</div>
+                <p class="text-xs italic" onclick="toggleSingleRedaction(event)">
                   ${src.excerpt}
                 </p>
               </div>
             </div>
           </div>
 
-          <div class="px-6 pb-6 space-y-2.5">
-            <div class="text-xs text-inkMuted">
-              <strong class="text-ink">Поширення:</strong> ${src.spreadMethod}
+          <div class="p-5" style="padding-top:0;">
+            <div class="text-xs text-muted mb-3">
+              <strong style="color:var(--ink);">Поширення:</strong> ${src.spreadMethod}
             </div>
-            <button onclick="openSourceModal(${idx})" class="w-full mt-2 py-2.5 px-4 rounded-lg bg-paperDark hover:bg-ink hover:text-white text-ink text-xs font-medium transition-colors flex items-center justify-center gap-2">
-              <span>Повна картка джерела та реакція влади</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <button onclick="openSourceModal(${idx})" class="btn-secondary" style="width:100%; justify-content:center;">
+              Повна картка джерела та реакція влади →
             </button>
           </div>
         </article>
@@ -1063,16 +1326,11 @@
 
     function toggleAllRedactions() {
       allRedactionsRevealed = !allRedactionsRevealed;
-      const elements = document.querySelectorAll('.redacted-text');
-      elements.forEach(el => {
-        if (allRedactionsRevealed) {
-          el.classList.add('revealed');
-        } else {
-          el.classList.remove('revealed');
-        }
+      document.querySelectorAll('.redacted-text').forEach(el => {
+        if (allRedactionsRevealed) el.classList.add('revealed');
+        else el.classList.remove('revealed');
       });
-      const btnText = document.getElementById('redactionBtnText');
-      btnText.textContent = allRedactionsRevealed
+      document.getElementById('redactionBtnText').textContent = allRedactionsRevealed
         ? 'Приховати цензуровані фрагменти'
         : 'Розкрити цензуровані фрагменти в текстах';
     }
@@ -1083,40 +1341,36 @@
       document.getElementById('modalSourceType').textContent = `${src.code} • ${src.type}`;
       document.getElementById('modalSourceTitle').textContent = src.title;
       document.getElementById('modalSourceBody').innerHTML = `
-        <div class="rounded-xl overflow-hidden border border-borderWarm bg-paperDark h-52">
-          <img src="${src.image}" alt="${src.title}" onerror="this.onerror=null;this.src='${fallbackImg}';" class="w-full h-full object-cover grayscale" />
+        <div style="border-radius:12px; overflow:hidden; border:1px solid var(--border-warm); height:200px; background:var(--paper-dark);">
+          <img src="${src.image}" alt="${src.title}" onerror="this.onerror=null;this.src='${fallbackImg}';" style="width:100%; height:100%; object-fit:cover; filter:grayscale(100%);" />
         </div>
-        <div class="grid sm:grid-cols-2 gap-3 bg-paper p-4 rounded-xl border border-borderWarm text-xs">
-          <div><span class="text-inkMuted block">Дата створення / публікації:</span><strong class="text-ink">${src.date}</strong></div>
-          <div><span class="text-inkMuted block">Архів / Походження:</span><strong class="text-ink">${src.origin}</strong></div>
+        <div class="grid-2 p-4 text-xs" style="background:var(--paper); border-radius:10px; border:1px solid var(--border-warm);">
+          <div><span class="text-muted" style="display:block;">Дата створення / публікації:</span><strong>${src.date}</strong></div>
+          <div><span class="text-muted" style="display:block;">Архів / Походження:</span><strong>${src.origin}</strong></div>
         </div>
         <div>
-          <h4 class="font-serif font-bold text-base text-ink mb-1">Цитований уривок (без купюр цензури):</h4>
-          <blockquote class="p-4 rounded-xl bg-amber-50/70 border-l-4 border-crimson text-ink italic text-sm">
+          <h4 class="font-serif font-bold text-base mb-1">Цитований уривок (без купюр цензури):</h4>
+          <blockquote class="p-4 italic text-sm" style="background:#FEF3C7; border-left:4px solid var(--crimson); border-radius:8px;">
             ${src.excerpt.replace(/class="redacted-text"/g, 'class="redacted-text revealed"')}
           </blockquote>
         </div>
         <div>
-          <h4 class="font-serif font-bold text-base text-ink mb-1">Як дисиденти поширювали інформацію:</h4>
-          <p class="text-inkMuted">${src.spreadMethod}</p>
+          <h4 class="font-serif font-bold text-base mb-1">Як дисиденти поширювали інформацію:</h4>
+          <p class="text-muted">${src.spreadMethod}</p>
         </div>
         <div>
           <h4 class="font-serif font-bold text-base text-crimson mb-1">Реакція радянської влади та КДБ:</h4>
-          <p class="text-inkMuted">${src.regimeReaction}</p>
+          <p class="text-muted">${src.regimeReaction}</p>
         </div>
       `;
-      const modal = document.getElementById('sourceModal');
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
+      document.getElementById('sourceModal').classList.add('open');
     }
 
     function closeSourceModal() {
-      const modal = document.getElementById('sourceModal');
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
+      document.getElementById('sourceModal').classList.remove('open');
     }
 
-    // ================= 5. ДАНІ 5 КЕЙСІВ КІБЕРБЕЗПЕКИ =================
+    // ================= 6. ДАНІ 5 КЕЙСІВ КІБЕРБЕЗПЕКИ =================
     const cyberCases = [
       {
         id: 'case1',
@@ -1125,7 +1379,7 @@
         category: 'Захист акаунтів і таємниця кореспонденції',
         scenario: 'Учень або журналіст отримує в месенджері повідомлення нібито від адміністрації освітньої платформи чи банку з вимогою терміново перейти за посиланням (наприклад, `mon0bank-verify.com`) і ввести пароль та SMS-код для «підтвердження безпеки».',
         threatAnalysis: 'Це класичний цільовий фішинг (Spear Phishing) із використанням підміни доменного імені (тайпсквотинг). Мета зловмисників — перехопити сесію, отримати доступ до приватного листування, хмарного диска з документами та контактної книги жертви.',
-        legalNorms: 'Порушення ст. 31 Конституції України (таємниця листування і телефонних розмов), а також злочин, передбачений ст. 361 Кримінального кодексу України (несанкціоноване втручання в роботу інформаційних та електронних комунікаційних систем) і ст. 190 ККУ (шахрайство).',
+        legalNorms: 'Порушення ст. 31 Конституції України (таємниця листування і телефонних розмов), а також злочин, передбачений ст. 361 Кримінального кодексу України (несанкціоноване втручання в роботу інформаційних систем) і ст. 190 ККУ (шахрайство).',
         actionRules: [
           'Завжди перевіряти доменне ім’я в адресному рядку браузера та наявність дійсного SSL-сертифіката.',
           'Увімкнути двофакторну автентифікацію (2FA) через застосунок-генератор кодів (Google Authenticator, Aegis) або апаратний ключ, а не через SMS.',
@@ -1140,7 +1394,7 @@
         category: 'Захист персональних даних і приватності',
         scenario: 'В анонімному Telegram-каналі без згоди людини публікують її домашню адресу, номер телефону, фото паспорта та приватні світлини із закликами до цькування через її громадянську позицію.',
         threatAnalysis: 'Доксинг (Doxing) — публікація конфіденційної ідентифікаційної інформації для залякування, шантажу або фізичного переслідування особи. Це створює пряму загрозу безпеці життя, здоров’я та честі людини.',
-        legalNorms: 'Пряме порушення ст. 32 Конституції України, Закону України «Про захист персональних даних» № 2297-VI та ст. 182 Кримінального кодексу України («Порушення недоторканності приватного життя» — незаконне збирання, зберігання або поширення конфіденційної інформації про особу).',
+        legalNorms: 'Пряме порушення ст. 32 Конституції України, Закону України «Про захист персональних даних» № 2297-VI та ст. 182 Кримінального кодексу України («Порушення недоторканності приватного життя»).',
         actionRules: [
           'Зафіксувати правопорушення (зробити скріншоти з видимою URL-адресою посту, датою та часом) та подати електронну заяву до Департаменту кіберполіції НПУ.',
           'Мінімізувати власний цифровий слід: приховати номер телефону в налаштуваннях приватності Telegram, закрити геомітки та не публікувати фото документів у відкритому доступі.',
@@ -1154,19 +1408,19 @@
         title: 'Фейкові новини, діпфейки та ІПСО в соціальних мережах',
         category: 'Медіаграмотність і верифікація джерел',
         scenario: 'У мережі вірусно поширюється емоційне відео або скріншот «таємного документа» без посилання на офіційне першоджерело із закликом терміново репостити повідомлення у всі чати.',
-        threatAnalysis: 'Інформаційно-психологічні операції (ІПСО) та генеративні діпфейки використовують емоційні тригери (страх, гнів, паніку), щоб вимкнути критичне мислення користувача та змусити його стати безкоштовним ретранслятором ворожої дезінформації.',
+        threatAnalysis: 'Інформаційно-психологічні операції (ІПСО) та генеративні діпфейки використовують емоційні тригери (страх, гнів, паніку), щоб вимкнути критичне мислення користувача та змусити його стати ретранслятором дезінформації.',
         legalNorms: 'Згідно зі ст. 34 Конституції України та Законом України «Про медіа», свобода поширення інформації поєднується з відповідальністю за недостовірну інформацію. Поширення ворожої пропаганди або відомостей про переміщення Сил оборони тягне кримінальну відповідальність за ст. 114-2 та ст. 436-2 КК України.',
         actionRules: [
           'Застосувати правило інформаційної гігієни: перевірити інформацію щонайменше у 2–3 незалежних офіційних джерелах (Укрінформ, Суспільне, офіційні сайти відомств).',
           'Використати зворотний пошук зображень (Google Lens, TinEye), щоб перевірити, чи не є фото старим або відредагованим.',
           'Звертати увагу на ознаки маніпуляції: анонімне джерело, капслок, відсутність дати, вимога «максимального репосту».'
         ],
-        historicalParallel: 'Укладаючи «Український вісник», В’ячеслав Чорновіл запровадив суворий стандарт фактчекінгу: кожне повідомлення про обшук чи суд містило прізвища, точні дати й перевірені свідчення, щоб ніхто не міг звинуватити дисидентів у брехні.'
+        historicalParallel: 'Укладаючи «Український вісник», В’ячеслав Чорновіл запровадив суворий стандарт фактчекінгу: кожне повідомлення про обшук чи суд містило прізвища, точні дати й перевірені свідчення.'
       },
       {
         id: 'case4',
         num: 'Ситуація 04',
-        title: 'Перехоплення трафіку у відкритій мережі Wi-Fi (атака Man-in-the-Middle)',
+        title: 'Перехоплення трафіку у відкритій мережі Wi-Fi (Man-in-the-Middle)',
         category: 'Шифрування та захист каналів зв’язку',
         scenario: 'Користувач підключається у кав’ярні чи транспорті до відкритої мережі Wi-Fi без пароля і передає важливі документи проєкту або авторизується на сайтах без захищеного з’єднання.',
         threatAnalysis: 'У незашифрованій публічній мережі зловмисник може розгорнути підставну точку доступу («Evil Twin») і виконати атаку перехоплення трафіку (Man-in-the-Middle), зчитуючи незашифровані пакети даних, кукі-файли сесій та паролі.',
@@ -1176,12 +1430,12 @@
           'Під час роботи у публічних мережах використовувати перевірений VPN-сервіс або мобільний інтернет (4G/5G) замість відкритого Wi-Fi.',
           'Вимкнути автоматичне підключення до відкритих бездротових мереж та загальний доступ до папок на ноутбуці.'
         ],
-        historicalParallel: 'Щоб уникнути перлюстрації (таємного розкриття листів на пошті агентами КДБ), дисиденти використовували умовні шифри, невидимі чорнила або передавали рукописи лише через перевірених кур’єрів.'
+        historicalParallel: 'Щоб уникнути перлюстрації (таємного розкриття листів на пошті агентами КДБ), дисиденти використовували умовні шифри або передавали рукописи лише через перевірених кур’єрів.'
       },
       {
         id: 'case5',
         num: 'Ситуація 05',
-        title: 'Плагіат, порушення авторського права та цифрової академічної доброчесності',
+        title: 'Плагіат, порушення авторського права та академічної доброчесності',
         category: 'Інтелектуальна власність і правова культура',
         scenario: 'Розробник або учень копіює чужі авторські тексти, фотографії чи програмний код з інтернету, видаляє ім’я автора й видає матеріал за власну розробку без посилання на першоджерело.',
         threatAnalysis: 'Привласнення результатів чужої інтелектуальної праці підриває довіру до освітніх і наукових досліджень, порушує майнові та особисті немайнові права творця і може призвести до блокування сайту за процедурою DMCA.',
@@ -1189,9 +1443,9 @@
         actionRules: [
           'Завжди вказувати автора, назву джерела, архівний фонд або активне гіперпосилання при цитуванні текстів і документів.',
           'Використовувати зображення з відкритими ліцензіями (Creative Commons — CC BY, CC BY-SA, Public Domain із Wikimedia Commons) або власні ілюстрації.',
-          'Захищати власні цифрові продукти за допомогою ліцензування у репозиторіях (MIT / CC BY-NC) та технічних засобів контролю цілісності.'
+          'Захищати власні цифрові продукти за допомогою ліцензування у репозиторіях та технічних засобів контролю цілісності.'
         ],
-        historicalParallel: 'Попри смертельний ризик арешту, Іван Дзюба, В’ячеслав Чорновіл і Василь Стус підписували свої твори та відкриті листи справжніми іменами, стверджуючи персональну відповідальність за кожне сказане слово.'
+        historicalParallel: 'Попри смертельний ризик арешту, Іван Дзюба, В’ячеслав Чорновіл і Василь Стус підписували свої твори та відкриті листи справжніми іменами, стверджуючи персональну відповідальність за кожне слово.'
       }
     ];
 
@@ -1199,77 +1453,70 @@
       const listEl = document.getElementById('cyberTabsList');
       const detailEl = document.getElementById('cyberCaseDetail');
 
-      listEl.innerHTML = cyberCases.map((c, idx) => `
-        <button
-          onclick="renderCyberCases(${idx})"
-          class="w-full text-left p-4 rounded-xl border transition-all flex items-start gap-3.5 ${
-            idx === activeIdx
-              ? 'bg-ink text-white border-ink shadow-md'
-              : 'bg-white text-ink hover:bg-paperDark/60 border-borderWarm'
-          }">
-          <span class="font-mono text-xs px-2 py-1 rounded ${
-            idx === activeIdx ? 'bg-crimson text-white' : 'bg-paperDark text-inkMuted'
-          }">${String(idx + 1).padStart(2, '0')}</span>
-          <div>
-            <div class="text-[11px] font-mono uppercase tracking-wider ${
-              idx === activeIdx ? 'text-paper/70' : 'text-crimson'
-            }">${c.category}</div>
-            <div class="font-serif font-bold text-sm sm:text-base leading-snug mt-0.5">${c.title}</div>
-          </div>
-        </button>
-      `).join('');
+      listEl.innerHTML = cyberCases.map((c, idx) => {
+        const active = idx === activeIdx;
+        return `
+          <button
+            onclick="renderCyberCases(${idx})"
+            style="width:100%; text-align:left; padding:1rem; border-radius:12px; border:1px solid ${active ? 'var(--ink)' : 'var(--border-warm)'}; background:${active ? 'var(--ink)' : '#fff'}; color:${active ? '#fff' : 'var(--ink)'}; display:flex; align-items:flex-start; gap:0.85rem; transition:all 0.2s;">
+            <span class="font-mono text-xs font-bold" style="padding:4px 8px; border-radius:6px; background:${active ? 'var(--crimson)' : 'var(--paper-dark)'}; color:${active ? '#fff' : 'var(--ink-muted)'};">${String(idx + 1).padStart(2, '0')}</span>
+            <div>
+              <div class="font-mono text-xs" style="text-transform:uppercase; color:${active ? 'rgba(248,246,241,0.7)' : 'var(--crimson)'};">${c.category}</div>
+              <div class="font-serif font-bold text-base" style="margin-top:2px;">${c.title}</div>
+            </div>
+          </button>
+        `;
+      }).join('');
 
       const item = cyberCases[activeIdx];
       detailEl.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b border-borderWarm">
+        <div class="flex-between mb-4" style="padding-bottom:1rem; border-bottom:1px solid var(--border-warm);">
           <div>
-            <span class="text-xs font-mono uppercase tracking-wider text-crimson font-semibold">${item.num} • ${item.category}</span>
-            <h3 class="font-serif text-2xl font-bold text-ink mt-0.5">${item.title}</h3>
+            <span class="section-kicker" style="margin-bottom:2px;">${item.num} • ${item.category}</span>
+            <h3 class="font-serif text-2xl font-bold">${item.title}</h3>
           </div>
-          <span class="px-3 py-1 rounded-full text-xs font-mono bg-paper border border-borderWarm text-inkMuted">
-            Кейс ${activeIdx + 1} / ${cyberCases.length}
-          </span>
+          <span class="pill-badge font-mono">Кейс ${activeIdx + 1} / ${cyberCases.length}</span>
         </div>
 
-        <div class="space-y-5 text-sm">
-          <div class="p-4 rounded-xl bg-paper border border-borderWarm">
-            <div class="text-xs font-mono uppercase tracking-wider text-inkMuted font-semibold mb-1">Опис цифрової ситуації:</div>
-            <p class="text-ink leading-relaxed">${item.scenario}</p>
+        <div class="text-sm" style="display:flex; flex-direction:column; gap:1.1rem;">
+          <div class="p-4" style="background:var(--paper); border-radius:10px; border:1px solid var(--border-warm);">
+            <div class="font-mono text-xs text-muted font-semibold mb-1" style="text-transform:uppercase;">Опис цифрової ситуації:</div>
+            <p>${item.scenario}</p>
           </div>
 
-          <div class="grid sm:grid-cols-2 gap-4">
-            <div class="p-4 rounded-xl bg-crimsonLight/50 border border-crimson/20">
-              <div class="text-xs font-mono uppercase tracking-wider text-crimson font-semibold mb-1">Технічна суть загрози:</div>
-              <p class="text-xs sm:text-sm text-ink leading-relaxed">${item.threatAnalysis}</p>
+          <div class="grid-2">
+            <div class="p-4" style="background:var(--crimson-light); border-radius:10px; border:1px solid rgba(158,42,43,0.2);">
+              <div class="font-mono text-xs text-crimson font-semibold mb-1" style="text-transform:uppercase;">Технічна суть загрози:</div>
+              <p class="text-xs">${item.threatAnalysis}</p>
             </div>
-            <div class="p-4 rounded-xl bg-navyLight/50 border border-navy/20">
-              <div class="text-xs font-mono uppercase tracking-wider text-navy font-semibold mb-1">Правова оцінка (Законодавство України):</div>
-              <p class="text-xs sm:text-sm text-ink leading-relaxed">${item.legalNorms}</p>
+            <div class="p-4" style="background:var(--navy-light); border-radius:10px; border:1px solid rgba(30,58,95,0.2);">
+              <div class="font-mono text-xs text-navy font-semibold mb-1" style="text-transform:uppercase;">Правова оцінка (Законодавство України):</div>
+              <p class="text-xs">${item.legalNorms}</p>
             </div>
           </div>
 
           <div>
-            <div class="text-xs font-mono uppercase tracking-wider text-emerald-800 font-semibold mb-2">Правила безпечної поведінки та алгоритм дій:</div>
-            <ul class="space-y-2">
+            <div class="font-mono text-xs font-semibold mb-2" style="color:var(--emerald-text); text-transform:uppercase;">Правила безпечної поведінки та алгоритм дій:</div>
+            <div style="display:flex; flex-direction:column; gap:0.5rem;">
               ${item.actionRules.map(rule => `
-                <li class="flex items-start gap-2.5 text-ink">
-                  <span class="w-5 h-5 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">✓</span>
-                  <span class="leading-relaxed">${rule}</span>
-                </li>
+                <div style="display:flex; align-items:flex-start; gap:0.6rem;">
+                  <span style="width:20px; height:20px; border-radius:999px; background:var(--emerald-bg); color:var(--emerald-text); font-size:0.75rem; font-weight:700; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px;">✓</span>
+                  <span>${rule}</span>
+                </div>
               `).join('')}
-            </ul>
+            </div>
           </div>
 
-          <div class="p-4 rounded-xl bg-paperDark/70 border-l-4 border-gold">
-            <div class="text-xs font-mono uppercase tracking-wider text-gold font-semibold mb-1">Історична паралель (1960–1980-ті рр.):</div>
-            <p class="text-xs sm:text-sm text-inkMuted leading-relaxed">${item.historicalParallel}</p>
+          <div class="p-4 accent-left-gold" style="background:var(--paper-dark); border-radius:8px;">
+            <div class="font-mono text-xs text-gold font-semibold mb-1" style="text-transform:uppercase;">Історична паралель (1960–1980-ті рр.):</div>
+            <p class="text-xs text-muted">${item.historicalParallel}</p>
           </div>
         </div>
       `;
     }
 
-    // ================= ІНІЦІАЛІЗАЦІЯ =================
-    document.addEventListener('DOMContentLoaded', () => {
+    // ================= 7. ЗАПУСК ІНТЕРАКТИВНИХ МОДУЛІВ =================
+    (function initApp() {
       if (!document.getElementById('eraContent')) return;
 
       switchEra('1965');
@@ -1282,10 +1529,10 @@
       const mobileMenu = document.getElementById('mobileMenu');
       if (mobileBtn && mobileMenu) {
         mobileBtn.addEventListener('click', () => {
-          mobileMenu.classList.toggle('hidden');
+          mobileMenu.classList.toggle('open');
         });
         document.querySelectorAll('.mobile-link').forEach(link => {
-          link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+          link.addEventListener('click', () => mobileMenu.classList.remove('open'));
         });
       }
 
@@ -1295,7 +1542,7 @@
           if (e.target === modal) closeSourceModal();
         });
       }
-    });
+    })();
   </script>
 </body>
 </html>
